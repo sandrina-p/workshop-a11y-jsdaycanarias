@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { linkCSS } from "../../components/Button";
-import { PageShell } from "../../components/Layout";
+import { linkCSS } from "../../src/components/Button";
+import { PageShell } from "../../src/components/Layout";
 
 export default function Profile() {
   const router = useRouter();

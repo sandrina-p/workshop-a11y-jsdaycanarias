@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { css } from "styled-components";
 
-import { buttonCSS, linkCSS } from "../components/Button";
-import { Case, SROnly, Stack } from "../components/Layout";
-import { useContextExercise } from "../components/pageLayouts/LayoutExercise";
 import imgCatRest from "../public/imgs/cat_rest.jpg";
 import imgCatSearching from "../public/imgs/cat_searching.jpg";
 import imgCatStairing from "../public/imgs/cat_stairing.jpg";
+import { buttonCSS, linkCSS } from "../src/components/Button";
+import { Case, SROnly, Stack } from "../src/components/Layout";
+import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
 
 function Exercise() {
   const router = useRouter();

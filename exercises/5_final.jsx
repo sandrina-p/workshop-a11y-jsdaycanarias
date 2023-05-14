@@ -1,19 +1,19 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { linkCSS } from "../components/Button";
+import ImgMonstera from "../public/imgs/monstera.png";
+import { linkCSS } from "../src/components/Button";
 import {
   Case,
   IconArrowTop,
   IconCart,
   SROnly,
   Stack,
-} from "../components/Layout";
-import { Tooltip, TooltipBox, TooltipItself } from "../components/Tooltip";
-import { useContextExercise } from "../components/pageLayouts/LayoutExercise";
-import ImgMonstera from "../public/imgs/monstera.png";
+} from "../src/components/Layout";
+import { Tooltip, TooltipBox, TooltipItself } from "../src/components/Tooltip";
+import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
 import Solution from "./5_final.solution";
 import * as Styles from "./5_final.styled";
 

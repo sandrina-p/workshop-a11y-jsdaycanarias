@@ -1,9 +1,13 @@
 import React from "react";
 
-import { textMonoCSS } from "../components/Button";
-import { Case, Stack, rotateCSS } from "../components/Layout";
-import { useContextExercise } from "../components/pageLayouts/LayoutExercise";
-import { fakeWaitTime, shuffleDays, usePrefersReducedMotion } from "../utils";
+import { textMonoCSS } from "../src/components/Button";
+import { Case, Stack, rotateCSS } from "../src/components/Layout";
+import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
+import {
+  fakeWaitTime,
+  shuffleDays,
+  usePrefersReducedMotion,
+} from "../src/utils";
 
 function Exercise() {
   const [text, setText] = React.useState("");

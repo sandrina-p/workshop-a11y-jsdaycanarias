@@ -1,11 +1,11 @@
 import React from "react";
 import { css } from "styled-components";
 
-import { buttonCSS, buttonOutlineCSS } from "../components/Button";
-import { fieldCSS } from "../components/Form";
-import { Case, Loader, Stack } from "../components/Layout";
-import { useContextExercise } from "../components/pageLayouts/LayoutExercise";
-import { fetchFakeLottery, mailPattern } from "../utils";
+import { buttonCSS, buttonOutlineCSS } from "../src/components/Button";
+import { fieldCSS } from "../src/components/Form";
+import { Case, Loader, Stack } from "../src/components/Layout";
+import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
+import { fetchFakeLottery, mailPattern } from "../src/utils";
 
 function Exercise() {
   return (

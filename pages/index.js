@@ -2,10 +2,15 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 
-import { Footer } from "../components/Footer";
-import { CardLink, LinkExternal, PageShell, Stack } from "../components/Layout";
 import imgGSlides from "../public/imgs/gslides.png";
 import imgSlack from "../public/imgs/slack.png";
+import { Footer } from "../src/components/Footer";
+import {
+  CardLink,
+  LinkExternal,
+  PageShell,
+  Stack,
+} from "../src/components/Layout";
 
 /*eslint-disable @next/next/no-img-element */
 

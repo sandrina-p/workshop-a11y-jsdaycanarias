@@ -3,21 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { linkCSS } from "../components/Button";
+import ImgMonstera from "../public/imgs/monstera.png";
+import { linkCSS } from "../src/components/Button";
 import {
   Case,
   IconArrowTop,
   IconCart,
   SROnly,
   Stack,
-} from "../components/Layout";
-import { Tooltip, TooltipBox, TooltipItself } from "../components/Tooltip";
-import ImgMonstera from "../public/imgs/monstera.png";
+} from "../src/components/Layout";
+import { Tooltip, TooltipBox, TooltipItself } from "../src/components/Tooltip";
 import {
   getSingOrPlural,
   usePrefersReducedMotion,
   usePrevious,
-} from "../utils";
+} from "../src/utils";
 import * as Styles from "./5_final.styled";
 
 const CART_COUNT_LIMIT = 5;

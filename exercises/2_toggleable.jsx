@@ -2,9 +2,9 @@
 import React from "react";
 import { css } from "styled-components";
 
-import { Button, buttonToggleCSS } from "../components/Button";
-import { Case, IconHeart, Stack } from "../components/Layout";
-import { useContextExercise } from "../components/pageLayouts/LayoutExercise";
+import { Button, buttonToggleCSS } from "../src/components/Button";
+import { Case, IconHeart, Stack } from "../src/components/Layout";
+import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
 
 function Exercise() {
   return (

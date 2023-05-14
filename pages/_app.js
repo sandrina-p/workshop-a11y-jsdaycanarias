@@ -1,7 +1,7 @@
 import React from "react";
 import "wicg-inert";
 
-import "../styles/globals.css";
+import "../src/styles/globals.css";
 
 function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

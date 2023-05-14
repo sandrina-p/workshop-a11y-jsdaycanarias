@@ -1,5 +1,5 @@
-import { LayoutExercise } from "../../components/pageLayouts/LayoutExercise.jsx";
 import Page from "../../exercises/2_toggleable.jsx";
+import { LayoutExercise } from "../../src/components/pageLayouts/LayoutExercise.jsx";
 
 export default Page;
 
