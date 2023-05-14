@@ -1,0 +1,85 @@
+html {
+  font-size: 62.5%;
+  --theme-width: 56rem;
+  --theme-text_0: hsl(0deg 0% 20%);
+  --theme-text_1: hsl(0deg 0% 43%);
+  --theme-text_invert: hsl(0deg 0% 100%);
+  --theme-bg_0: hsl(27deg 39% 95%);
+  --theme-bg_1: hsl(0deg 0% 100%);
+  --theme-primary: hsl(266deg 100% 61%);
+  --theme-primary_smooth: hsl(266deg 100% 92%);
+  --theme-secondary: hsl(27deg 100% 48%);
+  --theme-error: #d52424;
+  --theme-focus_shadow: var(--theme-bg_0) 0 0 0 2px,
+    var(--theme-secondary) 0 0 0 4px;
+  --theme-focus_outline: 2px solid transparent;
+}
+
+body {
+  background-color: var(--theme-bg_0);
+  color: var(--theme-text_0);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  box-sizing: border-box;
+  color: #343434;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body * {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  /* workaround for a > button on exercise1 */
+  text-decoration-color: var(--theme-primary);
+}
+
+summary {
+  font-weight: 600;
+}
+
+img {
+  width: auto;
+  max-width: 100%;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 16px;
+}
+
+/* Screen Reader Only
+  https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
