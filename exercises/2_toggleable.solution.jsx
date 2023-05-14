@@ -3,27 +3,16 @@ import React from "react";
 import { css } from "styled-components";
 
 import { Button, buttonToggleCSS } from "../src/components/Button";
-import { Case, IconHeart, SROnly, Stack } from "../src/components/Layout";
-import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
-import { ActionsItems, actionsContainerCSS, refs } from "./2_toggleable.base";
-import { Exercise } from "./2_toggleable.exercise";
+import { Case, IconHeart, Stack } from "../src/components/Layout";
+import { ActionsItems, actionsContainerCSS } from "./2_toggleable.exercise";
 
-function Solution() {
-  return (
-    <>
-      <CaseSolutionToggleButtons />
-      <CaseSolutionCollapsingContent />
-    </>
-  );
-}
-
-function CaseSolutionToggleButtons() {
+function CaseToggleButtons() {
   const [isActiveA, setIsActiveA] = React.useState(false);
   const [isActiveB, setIsActiveB] = React.useState(false);
 
   return (
     <>
-      <Case title="Toggle button" refs={refs.toggleStates}>
+      <Case title="Toggle button">
         <Stack>
           <button
             onClick={() => setIsActiveA((status) => !status)}
@@ -68,15 +57,14 @@ const actionsListCSS = css`
 
 function CaseSolutionCollapsingContent() {
   return (
-    <Case title="Collapsed content" refs={refs.hiding}>
-      <ActionsMenuSolution />
-      <ActionsMenuSolutionVisibility />
-      <CaseToggleButtonText />
+    <Case title="Collapsed content">
+      <ActionsMenuInhert />
+      <ActionsMenuVisibility />
     </Case>
   );
 }
 
-function ActionsMenuSolution() {
+function ActionsMenuInhert() {
   const [isActionsOpen, setIsActionsOpen] = React.useState(false);
   const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
 
@@ -122,7 +110,7 @@ const cssActionsListVisibility = css`
   }
 `;
 
-function ActionsMenuSolutionVisibility() {
+function ActionsMenuVisibility() {
   const [isActionsOpen, setIsActionsOpen] = React.useState(false);
   const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
 
@@ -155,7 +143,7 @@ function CaseToggleButtonText() {
   const [isActive, setIsActive] = React.useState(false);
 
   return (
-    <Case title="Toggle toggle with text" refs={refs.toggleStates}>
+    <Case title="Toggle toggle with text">
       <Stack>
         <button
           onClick={() => setIsActive((status) => !status)}
@@ -174,7 +162,17 @@ function CaseToggleButtonText() {
 // ===============
 // ===============
 
-export default function Page() {
-  const { variant } = useContextExercise();
-  return variant === "exercise" ? <Exercise /> : <Solution />;
-}
+export const solutions = [
+  {
+    Solution: CaseToggleButtons,
+    explanation: ``,
+  },
+  {
+    Solution: CaseSolutionCollapsingContent,
+    explanation: ``,
+  },
+  {
+    Solution: CaseToggleButtonText,
+    explanation: ``,
+  },
+];

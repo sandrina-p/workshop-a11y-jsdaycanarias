@@ -7,7 +7,7 @@ import { ButtonTop } from "../src/components/ButtonTop";
 import { Case, Stack } from "../src/components/Layout";
 import { cssListCats, dataCats } from "../src/utils/cats";
 
-function LinkVsButton() {
+function CaseLinkVsButton() {
   const router = useRouter();
 
   return (
@@ -27,7 +27,7 @@ function LinkVsButton() {
   );
 }
 
-function BackToTop() {
+function CaseBackToTop() {
   function handleToTop() {
     window.scrollTo({
       top: 0,
@@ -62,10 +62,13 @@ function BackToTop() {
   );
 }
 
+// =============
+// =============
+
 export const cases = [
   {
-    id: "LinkVsButton",
-    Exercise: LinkVsButton,
+    id: "CaseLinkVsButton",
+    Exercise: CaseLinkVsButton,
     briefing: `
 You can open these two profiles with your mouse.   
 However, it doesn't work with the keyboard.
@@ -95,8 +98,8 @@ Make it work for keyboards too but wait... what's the difference between a \`<bu
     ],
   },
   {
-    id: "BackToTop",
-    Exercise: BackToTop,
+    id: "CaseBackToTop",
+    Exercise: CaseBackToTop,
     briefing: `
 At the end of the list there's a button to go back to the top.
 

@@ -13,7 +13,6 @@ import {
   space,
 } from "styled-system";
 
-import { linkCSS } from "./Button";
 import { useContextExercise } from "./pageLayouts/Briefing";
 
 // ============
@@ -150,7 +149,7 @@ const CaseBox = styled(Box).attrs({ as: "article" })`
   position: relative;
   width: 100%;
   max-width: var(--theme-width);
-  margin: 30px 0 0;
+  margin: 20px 0 0;
   padding: 32px 16px var(--pb);
   border-radius: 4px;
   background-color: var(--theme-bg_1);
@@ -174,13 +173,6 @@ const CaseVariant = styled.span`
   font-weight: 400;
   margin: 0;
   color: var(--theme-text_1);
-`;
-
-const Refs = styled.footer`
-  background: #eee;
-  padding: 4px 16px;
-  font-size: 1.3rem;
-  margin: 32px -16px 0;
 `;
 
 export function Case({ title, children }) {

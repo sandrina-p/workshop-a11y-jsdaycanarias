@@ -4,26 +4,13 @@ import { css } from "styled-components";
 
 import { Button, buttonToggleCSS } from "../src/components/Button";
 import { Case, IconHeart, Stack } from "../src/components/Layout";
-import { ActionsItems, actionsContainerCSS, refs } from "./2_toggleable.base";
 
-export function Exercise() {
-  return (
-    <>
-      <CaseToggleButtonsExercise />
-      <CaseCollapsingContentExercise />
-      <CaseToggleButtonText />
-    </>
-  );
-}
-
-// ===============
-
-function CaseToggleButtonsExercise() {
+function CaseToggleButton() {
   const [isActiveA, setIsActiveA] = React.useState(false);
   const [isActiveB, setIsActiveB] = React.useState(false);
 
   return (
-    <Case title="Toggle button" refs={refs.toggleStates}>
+    <Case title="Toggle button">
       <Stack>
         <button
           onClick={() => setIsActiveA((status) => !status)}
@@ -48,10 +35,51 @@ function CaseToggleButtonsExercise() {
 
 // ===============
 
-function CaseCollapsingContentExercise() {
+const actionsContainerCSS = css`
+  position: relative;
+  width: min-content;
+  margin-bottom: 8px;
+  --val: calc(100% + 2px); /*2px for focus shadow space */
+`;
+
+const actionsUlCSS = css`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 4px;
+  display: flex;
+`;
+
+export function ActionsItems() {
   return (
-    <Case title="Collapsed content" refs={refs.hiding}>
-      <ActionsMenuExercise />
+    <ul css={actionsUlCSS}>
+      <li>
+        <button onClick={() => alert("Imagine Copy")}>Copy</button>
+      </li>
+      <li>
+        <button onClick={() => alert("Imagine Cut")}>Cut</button>
+      </li>
+      <li>
+        <button onClick={() => alert("Imagine Edit")}>Edit</button>
+      </li>
+    </ul>
+  );
+}
+
+function CaseCollapsingContent() {
+  const [isActionsOpen, setIsActionsOpen] = React.useState(false);
+  const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
+
+  return (
+    <Case title="Collapsed content">
+      <>
+        <nav css={actionsContainerCSS}>
+          <Button onClick={toggleActionsOpen}>Actions</Button>
+          <div css={actionsListCSS} data-open={isActionsOpen}>
+            <ActionsItems />
+          </div>
+        </nav>
+      </>
     </Case>
   );
 }
@@ -69,29 +97,13 @@ const actionsListCSS = css`
   }
 `;
 
-function ActionsMenuExercise() {
-  const [isActionsOpen, setIsActionsOpen] = React.useState(false);
-  const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
-
-  return (
-    <>
-      <nav css={actionsContainerCSS}>
-        <Button onClick={toggleActionsOpen}>Actions</Button>
-        <div css={actionsListCSS} data-open={isActionsOpen}>
-          <ActionsItems />
-        </div>
-      </nav>
-    </>
-  );
-}
-
 // ===============
 
 function CaseToggleButtonText() {
   const [isActive, setIsActive] = React.useState(false);
 
   return (
-    <Case title="Toggle toggle with text" refs={refs.toggleStates}>
+    <Case title="Toggle toggle with text">
       <Stack>
         <button
           onClick={() => setIsActive((status) => !status)}
@@ -105,3 +117,60 @@ function CaseToggleButtonText() {
     </Case>
   );
 }
+
+// =============
+// =============
+
+export const cases = [
+  {
+    id: "CaseLinkVsButton",
+    Exercise: CaseToggleButton,
+    briefing: ``,
+    resources: [
+      {
+        name: "Rules of ARIA",
+        url: "https://w3c.github.io/using-aria/#notes2",
+      },
+      {
+        name: "Name, Role, Value",
+        url: "https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=412#name-role-value",
+      },
+    ],
+  },
+  {
+    id: "CaseCollapsingContent",
+    Exercise: CaseCollapsingContent,
+    briefing: ``,
+    resources: [
+      {
+        name: "Hiding content responsibly",
+        url: "https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/",
+      },
+      {
+        name: "The inert attribute",
+        url: "https://developer.chrome.com/articles/inert/",
+      },
+      {
+        extra: true,
+        name: "Animating Details",
+        url: "https://css-tricks.com/exploring-what-the-details-and-summary-elements-can-do/",
+      },
+      {
+        extra: true,
+        name: "Details are not accordions or menus",
+        url: "https://adrianroselli.com/2019/04/details-summary-are-not-insert-control-here.html",
+      },
+    ],
+  },
+  {
+    id: "CaseToggleButtonText",
+    Exercise: CaseToggleButtonText,
+    briefing: ``,
+    resources: [
+      {
+        name: "Playing with state",
+        url: "https://sarahmhigley.com/writing/playing-with-state/",
+      },
+    ],
+  },
+];
