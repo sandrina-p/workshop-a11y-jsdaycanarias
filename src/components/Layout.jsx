@@ -91,13 +91,15 @@ export const Text = styled.span`
 
 /////////////////
 
-export const TitleDivider = styled.h2`
+export const TitleDivider = styled.h1`
   margin: 0 0 20px;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 2rem;
+
+  margin-bottom: -60px;
 
   &::before,
   &::after {

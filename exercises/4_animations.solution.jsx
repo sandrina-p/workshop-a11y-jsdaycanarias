@@ -8,69 +8,8 @@ import {
   shuffleDays,
   usePrefersReducedMotion,
 } from "../src/utils";
-
-function Exercise() {
-  const [text, setText] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState("");
-
-  async function revealNumber() {
-    setText("");
-    setIsLoading(true);
-
-    const stopShuffle = shuffleDays(setText);
-    await fakeWaitTime(1500);
-    stopShuffle();
-
-    setIsLoading(false);
-    setText("It's Friday!");
-  }
-
-  return (
-    <Case title="Animations personalized" refs={refs.motion}>
-      <div css={rotateCSS}></div>
-      <Stack>
-        <button onClick={revealNumber}>Reavel lucky week day</button>
-        <button onClick={() => setText("")}>Reset</button>
-        <p>Motion: Yes</p>
-      </Stack>
-      <br />
-      <p css={textMonoCSS}>{text}</p>
-    </Case>
-  );
-}
-
-/*
-
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-
-🚨   SPOILERS AHEAD   🚨
-
-🛑 DO NOT SCROLL MORE 🛑 
-
-🙈   SOLUTION BELOW   🙈
-
-
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-
-*/
+import { refs } from "./4_animations.base";
+import { Exercise } from "./4_animations.exercise";
 
 function Solution() {
   const [text, setText] = React.useState("");
@@ -120,22 +59,7 @@ function Solution() {
 // =============
 // =============
 
-// Unrelevant boilerplate code / data / css for this exercise
-
 export default function Page() {
   const { variant } = useContextExercise();
   return variant === "exercise" ? <Exercise /> : <Solution />;
 }
-
-var refs = {
-  motion: [
-    {
-      name: "no-motion-first approach",
-      url: "https://www.tatianamac.com/posts/prefers-reduced-motion/",
-    },
-    {
-      name: "usePrefersReducedMotion hook",
-      url: "https://www.joshwcomeau.com/snippets/react-hooks/use-prefers-reduced-motion/",
-    },
-  ],
-};

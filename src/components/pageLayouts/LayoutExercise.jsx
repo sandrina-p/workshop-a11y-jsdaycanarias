@@ -48,7 +48,7 @@ function SolutionToggler() {
 
 const ExerciseContext = React.createContext();
 
-export function LayoutExercise({ children, title }) {
+export function LayoutExercise({ children, title, hiddenTitle }) {
   const router = useRouter();
   const querySolution = router.query?.solution;
   const prevQuerySolution = usePrevious(querySolution);
@@ -65,7 +65,7 @@ export function LayoutExercise({ children, title }) {
     setVariant((state) => (state === "exercise" ? "solution" : "exercise"));
   }
   return (
-    <ExerciseContext.Provider value={{ variant, toggleVariant }}>
+    <ExerciseContext.Provider value={{ variant, toggleVariant, hiddenTitle }}>
       <PageShell data-variant={variant}>
         <Head>
           <title>Exercise: {title}</title>
@@ -85,7 +85,7 @@ export function LayoutExercise({ children, title }) {
         </Stack>
 
         <Stack as="main" my="36px" direction="column" gap="100px">
-          <SROnly as="h1">{title}</SROnly>
+          {!hiddenTitle && <SROnly as="h1">{title}</SROnly>}
           {children}
         </Stack>
       </PageShell>
