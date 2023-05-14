@@ -40,7 +40,7 @@ function Exercise() {
       </Case>
 
       <Case title="Generated data">
-        <h3>My cute cats</h3>
+        <h3>Cats</h3>
         <Stack>
           <ul css={cssListCats.ul}>
             {dataCats.map(({ url, name }, i) => (
@@ -135,7 +135,7 @@ function Solution() {
       </Case>
 
       <Case title="Generated data">
-        <h3>My cute cats</h3>
+        <h3>Cats</h3>
 
         <Stack>
           <ul css={cssListCats.ul}>
