@@ -3,13 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 import { Footer } from "../components/Footer";
-import {
-  Banner,
-  CardLink,
-  LinkExternal,
-  PageShell,
-  Stack,
-} from "../components/Layout";
+import { CardLink, LinkExternal, PageShell, Stack } from "../components/Layout";
 import imgGSlides from "../public/imgs/gslides.png";
 import imgSlack from "../public/imgs/slack.png";
 

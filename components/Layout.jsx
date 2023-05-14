@@ -161,15 +161,11 @@ const CardLinkDescription = styled.p`
 `;
 
 export function CardLink({ title, href, children }) {
-  const refLink = React.useRef();
-
   return (
     <CardLinkWrapper>
       <CardLinkHeading>
         <Link href={href} passHref>
-          <CardLinkTitle className="g-cardTitle" ref={refLink}>
-            {title}
-          </CardLinkTitle>
+          <CardLinkTitle>{title}</CardLinkTitle>
         </Link>
       </CardLinkHeading>
       <CardLinkDescription>{children}</CardLinkDescription>

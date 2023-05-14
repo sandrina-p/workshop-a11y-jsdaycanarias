@@ -77,8 +77,8 @@ export function LayoutExercise({ children, title }) {
           alignItems="center"
           mb="12px"
         >
-          <Link href="/" passHref>
-            <a css={linkCSS}>Home</a>
+          <Link href="/" css={linkCSS}>
+            Home
           </Link>
 
           <SolutionToggler />
