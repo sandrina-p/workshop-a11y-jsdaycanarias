@@ -5,23 +5,15 @@ import { useRef } from "react";
 
 import { buttonCSS, linkCSS } from "../src/components/Button";
 import { ButtonTop } from "../src/components/ButtonTop";
-import { Case, SROnly, Stack, TitleDivider } from "../src/components/Layout";
-import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
-import { cssListCats, dataCats, refs } from "./1_routing.base.jsx";
-import { Exercise } from "./1_routing.exercise";
+import { Case, SROnly, Stack } from "../src/components/Layout";
+import { cssListCats, dataCats } from "../src/utils/cats";
 
-function Solution() {
+export function LinkVsButton() {
   const router = useRouter();
-  const refTitle = useRef();
 
   return (
     <>
-      <TitleDivider ref={refTitle} tabIndex="-1">
-        Routing
-      </TitleDivider>
-
-      {/* 💡 Nothing changes here */}
-      <Case title="What's a link?" refs={refs.btnVsLink}>
+      <Case title="What's a link?">
         <Stack gap="24px">
           {/* 💡 Whenever you deal with routes directly, use a Link instead of div/button */}
           <div onClick={() => router.push(`/profile`)} css={buttonCSS}>
@@ -33,29 +25,33 @@ function Solution() {
           </Link>
         </Stack>
       </Case>
+    </>
+  );
+}
 
-      <Case title="Go back button" refs={refs.btnAreLinks}>
-        <button
-          onClick={() => {
-            // 💡 Verify if previous page exists before using router.back
-            const hasPreviousPage = window.history.length > 1;
+export function BackToTop() {
+  const refTitle = useRef();
 
-            if (hasPreviousPage) {
-              router.back();
-            } else {
-              // fallback to a meaningful route.
-              router.push("/");
-            }
-            // P.S. You could isolate this logic into a "<GoBackButton />
-          }}
-          css={buttonCSS}
-        >
-          Go back
-        </button>
-      </Case>
+  function handleToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
-      <Case title="Generated data">
-        <h3>Cats</h3>
+    // 💡 Also focus the closest element (the h1)
+    // and add a tabindex="-1" to it
+    refTitle.current.focus({
+      // 💡 Let me scroll be done by window.scrollTo
+      preventScroll: true,
+    });
+  }
+
+  return (
+    <>
+      <Case title="Back to top">
+        <h3 ref={refTitle} tabIndex="-1">
+          Cats
+        </h3>
 
         <Stack>
           <ul css={cssListCats.ul}>
@@ -75,34 +71,37 @@ function Solution() {
             ))}
           </ul>
         </Stack>
-      </Case>
 
-      <Case title="Back to top">
         <Stack justifyContent="flex-end" my="12px">
-          <ButtonTop
-            onClick={() => {
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-
-              // 💡 Also focus the closest element (the h1)
-              // and add a tabindex="-1" to it
-              refTitle.current.focus({
-                // 💡 Let me scroll be done by window.scrollTo
-                preventScroll: true,
-              });
-            }}
-          />
+          <ButtonTop onClick={handleToTop} />
         </Stack>
       </Case>
     </>
   );
 }
 
-// =============
+export const solutions = [
+  {
+    Solution: LinkVsButton,
+    explanation: `
+The overall guideline is:
 
-export default function Page() {
-  const { variant } = useContextExercise();
-  return variant === "exercise" ? <Exercise /> : <Solution />;
-}
+- \`<div>\`: Never use them for interactive elements, unless you are sure of what you are doing.
+- \`<a>\`: For any navigation related with routing.
+- \`<button>\`: For contextual actions within the page.
+
+My **personal decision tree** between both: If you can "bookmark" it, then it should be a link.
+    `,
+  },
+  {
+    Solution: BackToTop,
+    explanation: `
+Whenever you create a shortcut, remember to also update the keyboard position (focus).
+
+In this case, you can force an element to be focused 
+by using [\`.focus()\` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) with \`tabindex="-1"\` attribute.
+
+Although tricky, we have almost full control over the focus management in a webpage.
+    `,
+  },
+];

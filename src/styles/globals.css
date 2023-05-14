@@ -83,3 +83,11 @@ ul {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+details summary {
+  &:focus-visible {
+    border-radius: 4px;
+    box-shadow: var(--theme-focus_shadow);
+    outline: var(--theme-focus_outline);
+  }
+}

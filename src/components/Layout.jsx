@@ -14,7 +14,7 @@ import {
 } from "styled-system";
 
 import { linkCSS } from "./Button";
-import { useContextExercise } from "./pageLayouts/LayoutExercise";
+import { useContextExercise } from "./pageLayouts/Briefing";
 
 // ============
 
@@ -62,21 +62,10 @@ export const Hero = styled.header`
 /////////////////
 
 export const PageShell = styled.div`
-  max-width: 56rem;
   width: 100vw;
   min-height: 100vh;
   padding: 3rem 12px;
   margin: auto;
-
-  &[data-variant="exercise"] {
-    border-left: 1px dashed var(--theme-text_1);
-    border-right: 1px dashed var(--theme-text_1);
-  }
-  &[data-variant="solution"] {
-    /* border-left: 1px dashed var(--theme-text_0);
-    border-right: 1px dashed var(--theme-text_0); */
-    outline: 100vw solid var(--theme-text_0);
-  }
 `;
 
 /////////////////
@@ -87,27 +76,6 @@ export const Text = styled.span`
     css`
       text-align: ${$align};
     `}
-`;
-
-/////////////////
-
-export const TitleDivider = styled.h1`
-  margin: 0 0 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 2rem;
-
-  margin-bottom: -60px;
-
-  &::before,
-  &::after {
-    content: "";
-    flex-grow: 1;
-    display: block;
-    border-bottom: 1px solid var(--theme-primary);
-  }
 `;
 
 ////////////////
@@ -182,7 +150,7 @@ const CaseBox = styled(Box).attrs({ as: "article" })`
   position: relative;
   width: 100%;
   max-width: var(--theme-width);
-  margin: 3rem auto 0;
+  margin: 30px 0 0;
   padding: 32px 16px var(--pb);
   border-radius: 4px;
   background-color: var(--theme-bg_1);
@@ -215,28 +183,14 @@ const Refs = styled.footer`
   margin: 32px -16px 0;
 `;
 
-export function Case({ title, refs, children }) {
+export function Case({ title, children }) {
   const { variant } = useContextExercise();
 
   return (
-    <CaseBox $hasRefs={!!refs}>
+    <CaseBox>
       <CaseVariant>{variant}</CaseVariant>
       {title && <CaseTitle className="g-cardTitle">{title}</CaseTitle>}
       {children}
-
-      {refs && (
-        <Refs>
-          Refs:{" "}
-          {refs.map(({ name, url }, index) => (
-            <span key={name}>
-              <a href={url} css={linkCSS} target="_blank" rel="noreferrer">
-                {name}
-              </a>
-              {index + 1 !== refs.length ? ", " : null}
-            </span>
-          ))}
-        </Refs>
-      )}
     </CaseBox>
   );
 }
