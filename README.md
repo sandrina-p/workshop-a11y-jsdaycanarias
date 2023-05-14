@@ -44,7 +44,7 @@ npm install
 npm run dev
 ```
 
-You should see the project opening in a new localhost tab.
+Open [//localhost:3005/](http://localhost:3005/).
 
 ---
 
@@ -113,6 +113,6 @@ Here are some guidelines for things that are **OK** and **Not OK** based on this
 
 ## Copyright
 
-&copy; 2022 [Sandrina Pereira](https://www.sandrina-p.net/), All Rights Reserved, under [BSD 3-Clause License](LICENSE.txt).
+&copy; 2023 [Sandrina Pereira](https://www.sandrina-p.net/), All Rights Reserved, under [BSD 3-Clause License](LICENSE.txt).
 
 **This material cannot be used for workshops, training, or any other form of instructing or teaching, without express written consent.**
