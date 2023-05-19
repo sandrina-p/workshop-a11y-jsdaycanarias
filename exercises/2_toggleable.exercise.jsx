@@ -118,8 +118,9 @@ function CaseToggleButtonText() {
   );
 }
 
-// =============
-// =============
+// ========================
+// You can ignore this part
+// ========================
 
 export const cases = [
   {

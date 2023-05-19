@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 import { buttonCSS, linkCSS } from "../src/components/Button";
 import { ButtonTop } from "../src/components/ButtonTop";
-import { Case, SROnly, Stack } from "../src/components/Layout";
+import { Case, SROnly, Stack, TextNote } from "../src/components/Layout";
 import { cssListCats, dataCats } from "../src/utils/cats";
 
 export function LinkVsButton() {
@@ -33,8 +33,10 @@ export function BackToTop() {
   const refTitle = useRef();
 
   function handleToTop() {
+    console.log(refTitle.current);
+    const titleDistanceFromTop = refTitle.current.getBoundingClientRect().top;
     window.scrollTo({
-      top: 0,
+      top: window.scrollY + titleDistanceFromTop - 16,
       behavior: "smooth",
     });
 
@@ -48,8 +50,12 @@ export function BackToTop() {
 
   return (
     <>
-      <Case title="Back to top">
-        <h3 ref={refTitle} tabIndex="-1">
+      <Case title={`"Back to top" pattern`}>
+        <h3
+          ref={refTitle}
+          tabIndex="-1" // Allow JS to programatically focus this element.
+          css={cssListCats.title}
+        >
           Cats
         </h3>
 
@@ -75,6 +81,14 @@ export function BackToTop() {
         <Stack justifyContent="flex-end" my="12px">
           <ButtonTop onClick={handleToTop} />
         </Stack>
+
+        <TextNote $align="center">
+          Yes, I am cat person <span aria-hidden="true">😻</span>, check these{" "}
+          <a css={linkCSS} href="https://www.viagenpets.com/fun-cat-facts/">
+            fun cat facts
+          </a>
+          .
+        </TextNote>
       </Case>
     </>
   );
@@ -86,11 +100,11 @@ export const solutions = [
     explanation: `
 The overall guideline is:
 
-- \`<div>\`: Never use them for interactive elements, unless you are sure of what you are doing.
-- \`<a>\`: For any navigation related with routing.
-- \`<button>\`: For contextual actions within the page.
+- \`<div>\`: Never use them for interactive elements, unless you are really sure of what you are doing.
+- \`<a>\`: Used for any routing navigation.
+- \`<button>\`: Used for contextual actions within the page.
 
-My **personal decision tree** between both: If you can "bookmark" it, then it should be a link.
+My **personal decision tree** between both: If you can "bookmark" the link, then it should be \`<a>\`.
     `,
   },
   {
@@ -101,7 +115,7 @@ Whenever you create a shortcut, remember to also update the keyboard position (f
 In this case, you can force an element to be focused 
 by using [\`.focus()\` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) with \`tabindex="-1"\` attribute.
 
-Although tricky, we have almost full control over the focus management in a webpage.
+Although tricky, remember that JS allows us to have almost full control of the focus management.
     `,
   },
 ];

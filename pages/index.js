@@ -88,13 +88,19 @@ export default function Home() {
           <CardLink title="Toggleable interfaces" href="exercises/2">
             What we need to take into account with dynamic content.
           </CardLink>
-          <CardLink title="Error Handling" href="exercises/3">
+          <CardLink title="Error Handling - Forms" href="exercises/3">
+            Handling error states in an accesible way.
+          </CardLink>
+          <CardLink title="Error Handling - Requests" href="exercises/3">
             Handling error states in an accesible way.
           </CardLink>
           <CardLink title="Animations" href="exercises/4">
             Making animations more accessible.
           </CardLink>
-          <CardLink title="All together now" href="exercises/5">
+          <CardLink title="Advanced: Modals" href="exercises/5">
+            A final challenge wrapping all learnings together.
+          </CardLink>
+          <CardLink title="Advanced: ???" href="exercises/5">
             A final challenge wrapping all learnings together.
           </CardLink>
         </main>

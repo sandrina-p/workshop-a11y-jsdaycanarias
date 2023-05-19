@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { buttonCSS, linkCSS } from "../src/components/Button";
 import { ButtonTop } from "../src/components/ButtonTop";
-import { Case, Stack } from "../src/components/Layout";
+import { Case, Stack, TextNote } from "../src/components/Layout";
 import { cssListCats, dataCats } from "../src/utils/cats";
 
 function CaseLinkVsButton() {
@@ -36,8 +36,9 @@ function CaseBackToTop() {
   }
   return (
     <>
-      <Case title="Back to top">
-        <h3>Cats</h3>
+      <Case title={`"Back to top" pattern`}>
+        <h3 css={cssListCats.title}>Cats</h3>
+
         <Stack>
           <ul css={cssListCats.ul}>
             {dataCats.map(({ url, name }, i) => (
@@ -45,7 +46,7 @@ function CaseBackToTop() {
                 <Image src={url} alt="Cat_photo" />
                 <div css={cssListCats.info}>
                   <span>{name}</span>
-                  <a href={`#cat-link/${i}`} css={linkCSS}>
+                  <a href={`#cat-link/${name}`} css={linkCSS}>
                     View
                   </a>
                 </div>
@@ -57,13 +58,22 @@ function CaseBackToTop() {
         <Stack justifyContent="flex-end" my="12px">
           <ButtonTop onClick={handleToTop} />
         </Stack>
+
+        <TextNote $align="center">
+          Yes, I am cat person <span aria-hidden="true">😻</span>, check these{" "}
+          <a css={linkCSS} href="https://www.viagenpets.com/fun-cat-facts/">
+            fun cat facts
+          </a>
+          .
+        </TextNote>
       </Case>
     </>
   );
 }
 
-// =============
-// =============
+// ========================
+// You can ignore this part
+// ========================
 
 export const cases = [
   {
@@ -82,20 +92,17 @@ Make it work for keyboards too but wait... what's the difference between a \`<bu
       },
       {
         name: "Accessible client routing",
-        extra: true,
         url: "https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/",
       },
-      {
-        name: "Creating a 'Go back' link",
-        extra: true,
-        url: "https://stackoverflow.com/questions/72676015/react-router-go-back-using-link",
-      },
-      {
-        name: "Creating compliant focus indicators",
-        extra: true,
-        url: "https://www.sarasoueidan.com/blog/focus-indicators/",
-      },
     ],
+    briefing_bonus: `
+- [Creating a good focus indicator](https://www.sarasoueidan.com/blog/focus-indicators/): 
+The styles for \`:hover\` can be subtle, but \`:focus\` indicators _must stand out_,
+otherwise people will struggle to find it when using only the keyboard.
+In this website, all focus indicators are already compliant with [2.4.13 Focus Appearance](https://www.w3.org/TR/WCAG22/#focus-appearance). 
+- Next time you need to create a ["Go Back" link](https://stackoverflow.com/questions/72676015/react-router-go-back-using-link)
+be mindful of its caveats. You can check the code for the "Go back Home" in the header.
+`,
   },
   {
     id: "CaseBackToTop",
@@ -104,8 +111,8 @@ Make it work for keyboards too but wait... what's the difference between a \`<bu
 At the end of the list there's a button to go back to the top.
 
 It works well with a mouse, but not with the keyboard:
-After we trigger the button and then hit \`Tab\`, the focus 
-doesn't start from the top of the list. 
+After you press the button with \`Enter\` and then hit \`Tab\`, the focus 
+goes to "cat facts" link instead of starting from the top of the list. 
 
 How do we fix it?
     `,
@@ -115,5 +122,15 @@ How do we fix it?
         url: "https://www.a11yproject.com/posts/how-to-use-the-tabindex-attribute/",
       },
     ],
+    briefing_bonus: `
+- Images Alt: The \`alt\` attribute is mandatory regardless of the [image category](https://www.w3.org/WAI/tutorials/images/) you use.
+If you don't have a [good description](https://jakearchibald.com/2021/great-alt-text/), prefer to leave it empty \`alt=""\`.
+Never remove the \`alt\` attribute, otherwise the Screen Reader will read the image url (_yes, it's horrible!_). 
+Challenge: Do you think these cats have a good alt? Learn about 
+- Unique links: The criteria [2.4.9 Link Purpose (Context)](https://www.w3.org/TR/WCAG21/#link-purpose-in-context) states
+that links should be self explanatory in the context.
+In the list of cats, all links say "View"... view what?
+A solution to fix it is [using CSS to hide part of the link text](https://www.w3.org/WAI/WCAG21/Techniques/css/C7.html).
+      `,
   },
 ];

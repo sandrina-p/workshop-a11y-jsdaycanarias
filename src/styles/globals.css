@@ -91,3 +91,9 @@ details summary {
     outline: var(--theme-focus_outline);
   }
 }
+
+code {
+  background: #ddd;
+  border-radius: 3px;
+  padding: 0 2px;
+}

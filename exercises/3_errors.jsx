@@ -284,10 +284,12 @@ function CaseInputInformationSolution() {
   );
 }
 
-// =============
-// =============
-// =============
-// =============
+// ========================
+// You can ignore this part
+// ========================
+// ========================
+// You can ignore this part
+// ========================
 
 // Unrelevant boilerplate code / data / css for this exercise
 

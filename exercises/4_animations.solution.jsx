@@ -54,10 +54,12 @@ function Solution() {
   );
 }
 
-// =============
-// =============
-// =============
-// =============
+// ========================
+// You can ignore this part
+// ========================
+// ========================
+// You can ignore this part
+// ========================
 
 export default function Page() {
   const { variant } = useContextExercise();

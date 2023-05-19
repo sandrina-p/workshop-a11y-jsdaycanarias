@@ -77,6 +77,11 @@ export const Text = styled.span`
     `}
 `;
 
+export const TextNote = styled(Text)`
+  font-size: 1.2rem;
+  color: var(--theme-text_1);
+`;
+
 ////////////////
 
 const CardLinkWrapper = styled(Box).attrs({ as: "article" })`

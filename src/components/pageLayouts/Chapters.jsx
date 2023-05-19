@@ -38,10 +38,15 @@ const PanelContent = styled.div`
   details {
     cursor: pointer;
     max-width: 45ch;
+    margin-bottom: 24px;
   }
 
   ul {
     margin: 0;
+  }
+
+  li {
+    margin-bottom: 4px;
   }
 `;
 
@@ -55,7 +60,14 @@ export function Chapters({ chapters }) {
   );
 }
 
-function Chapter({ Exercise, Solution, briefing, explanation, resources }) {
+function Chapter({
+  Exercise,
+  Solution,
+  briefing,
+  briefing_bonus,
+  explanation,
+  resources,
+}) {
   const { variant } = useContextExercise();
 
   return (
@@ -69,19 +81,12 @@ function Chapter({ Exercise, Solution, briefing, explanation, resources }) {
       <PanelEnd>
         <PanelContent>
           <details>
-            {variant === "exercise" && (
-              <>
-                <summary>Briefing</summary>
-                <ReactMarkdown>{briefing}</ReactMarkdown>
-              </>
-            )}
-            {variant === "solution" && (
-              <>
-                <summary>Explanation</summary>
-                <ReactMarkdown>{explanation}</ReactMarkdown>
-              </>
-            )}
-            <p>Resources:</p>
+            <summary>Briefing</summary>
+            <ReactMarkdown>{briefing}</ReactMarkdown>
+          </details>
+
+          <details>
+            <summary>References</summary>
             <ul>
               {resources?.map(({ name, url, extra }) => (
                 <li key={name}>
@@ -93,6 +98,20 @@ function Chapter({ Exercise, Solution, briefing, explanation, resources }) {
               ))}
             </ul>
           </details>
+
+          {briefing_bonus && (
+            <details>
+              <summary>Bonus A11Y</summary>
+              <ReactMarkdown>{briefing_bonus}</ReactMarkdown>
+            </details>
+          )}
+
+          {variant === "solution" && (
+            <details>
+              <summary>🔥 Solution explained</summary>
+              <ReactMarkdown>{explanation}</ReactMarkdown>
+            </details>
+          )}
         </PanelContent>
       </PanelEnd>
     </Container>
