@@ -9,11 +9,11 @@ import {
   usePrefersReducedMotion,
 } from "../src/utils";
 import { refs } from "./4_animations.base";
-import { Exercise } from "./4_animations.exercise";
 
-function Solution() {
+export function Solution() {
   const [text, setText] = React.useState("");
   const [isLoading, setIsLoading] = React.useState("");
+
   // 💡 Use CSS media queries in JavaScript to customize animations.
   const reducedMotion = usePrefersReducedMotion();
 
@@ -52,16 +52,4 @@ function Solution() {
       <p css={textMonoCSS}>{text}</p>
     </Case>
   );
-}
-
-// ========================
-// You can ignore this part
-// ========================
-// ========================
-// You can ignore this part
-// ========================
-
-export default function Page() {
-  const { variant } = useContextExercise();
-  return variant === "exercise" ? <Exercise /> : <Solution />;
 }

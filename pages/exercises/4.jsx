@@ -1,8 +1,18 @@
-import Page from "../../exercises/4_animations.solution.jsx";
-import { LayoutExercise } from "../../src/components/pageLayouts/LayoutExercise.jsx";
+import { cases } from "../../exercises/4_forms.exercise.jsx";
+import { solutions } from "../../exercises/4_forms.solution.jsx";
+import { LayoutExercise } from "../../src/components/pageLayouts/Briefing.jsx";
+import { Chapters } from "../../src/components/pageLayouts/Chapters.jsx";
 
-export default Page;
+// @TODO move these to LayoutExercise
+const chapters = cases.map((materials, i) => ({
+  ...materials,
+  ...solutions[i],
+}));
+
+export default function Page() {
+  return <Chapters chapters={chapters} />;
+}
 
 Page.getLayout = function getLayout(page) {
-  return <LayoutExercise title="Animations">{page}</LayoutExercise>;
+  return <LayoutExercise title="Error handling - Forms">{page}</LayoutExercise>;
 };
