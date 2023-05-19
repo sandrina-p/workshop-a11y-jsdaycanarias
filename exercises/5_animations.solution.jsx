@@ -2,15 +2,13 @@ import React from "react";
 
 import { textMonoCSS } from "../src/components/Button";
 import { Case, Stack, rotateCSS } from "../src/components/Layout";
-import { useContextExercise } from "../src/components/pageLayouts/LayoutExercise";
 import {
   fakeWaitTime,
   shuffleDays,
   usePrefersReducedMotion,
 } from "../src/utils";
-import { refs } from "./4_animations.base";
 
-export function Solution() {
+export function CaseAnimation() {
   const [text, setText] = React.useState("");
   const [isLoading, setIsLoading] = React.useState("");
 
@@ -36,7 +34,7 @@ export function Solution() {
   }
 
   return (
-    <Case title="Animations personalized" refs={refs.motion}>
+    <Case title="Animations personalized">
       <div css={rotateCSS}></div>
       <Stack>
         <button onClick={revealNumber}>Reavel lucky week day</button>
@@ -53,3 +51,14 @@ export function Solution() {
     </Case>
   );
 }
+
+// ========================
+// You can ignore this part
+// ========================
+
+export const solutions = [
+  {
+    Solution: CaseAnimation,
+    explanation: ``,
+  },
+];

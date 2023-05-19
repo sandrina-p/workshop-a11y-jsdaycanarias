@@ -1,15 +1,10 @@
 import { cases } from "../../exercises/1_routing.exercise.jsx";
 import { solutions } from "../../exercises/1_routing.solution.jsx";
-import { LayoutExercise } from "../../src/components/pageLayouts/Briefing.jsx";
 import { Chapters } from "../../src/components/pageLayouts/Chapters.jsx";
-
-const chapters = cases.map((materials, i) => ({
-  ...materials,
-  ...solutions[i],
-}));
+import { LayoutExercise } from "../../src/components/pageLayouts/LayoutExercise.jsx";
 
 export default function Page() {
-  return <Chapters chapters={chapters} />;
+  return <Chapters cases={cases} solutions={solutions} />;
 }
 
 Page.getLayout = function getLayout(page) {

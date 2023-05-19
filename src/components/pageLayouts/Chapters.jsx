@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { linkCSS } from "../Button";
 import { Stack } from "../Layout";
-import { useContextExercise } from "./Briefing";
+import { useContextExercise } from "./LayoutExercise";
 
 const Container = styled(Stack)`
   gap: 0;
@@ -18,7 +18,7 @@ const PanelStart = styled.div`
   padding-right: 16px;
 
   @media (min-width: 75em) {
-    // 1200px
+    // 75em = 1200px
     width: calc(50% + 20rem); // @TODO responsive
   }
 `;
@@ -49,16 +49,6 @@ const PanelContent = styled.div`
     margin-bottom: 4px;
   }
 `;
-
-export function Chapters({ chapters }) {
-  return (
-    <Stack direction="column" gap="100px">
-      {chapters.map(({ id, ...props }) => {
-        return <Chapter key={id} {...props} />;
-      })}
-    </Stack>
-  );
-}
 
 function Chapter({
   Exercise,
@@ -115,5 +105,20 @@ function Chapter({
         </PanelContent>
       </PanelEnd>
     </Container>
+  );
+}
+
+export function Chapters({ cases, solutions }) {
+  const chapters = cases.map((materials, i) => ({
+    ...materials,
+    ...solutions[i],
+  }));
+
+  return (
+    <Stack direction="column" gap="100px">
+      {chapters.map(({ id, ...props }) => {
+        return <Chapter key={id} {...props} />;
+      })}
+    </Stack>
   );
 }

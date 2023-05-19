@@ -83,16 +83,16 @@ export default function Home() {
           </Stack>
 
           <CardLink title="Routing" href="exercises/1">
-            How routing affects navigation links.
+            How routing affects navigation links
           </CardLink>
           <CardLink title="Toggleable interfaces" href="exercises/2">
-            What we need to take into account with dynamic content.
+            Every click is an interaction, but not every interaction is a click
           </CardLink>
-          <CardLink title="Loading states - Async actions" href="exercises/3">
-            Handling loading states and dynamic results.
+          <CardLink title="Loading content" href="exercises/3">
+            Handling async actions with accessible loadings and results.
           </CardLink>
           <CardLink title="Form fields validations" href="exercises/4">
-            Handling interactions and errors in form fields.
+            If filling forms is boring, imagine filling an unaccessible one!
           </CardLink>
           <CardLink title="Animations" href="exercises/5">
             Making animations more accessible.

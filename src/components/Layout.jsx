@@ -13,7 +13,7 @@ import {
   space,
 } from "styled-system";
 
-import { useContextExercise } from "./pageLayouts/Briefing";
+import { useContextExercise } from "./pageLayouts/LayoutExercise";
 
 // ============
 

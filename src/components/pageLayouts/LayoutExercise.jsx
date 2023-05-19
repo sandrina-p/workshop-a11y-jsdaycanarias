@@ -64,6 +64,7 @@ export function LayoutExercise({ children, title }) {
   function toggleVariant() {
     setVariant((state) => (state === "exercise" ? "solution" : "exercise"));
   }
+
   return (
     <ExerciseContext.Provider value={{ variant, toggleVariant }}>
       <PageShell data-variant={variant}>
