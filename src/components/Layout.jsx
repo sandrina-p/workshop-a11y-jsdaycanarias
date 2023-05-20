@@ -35,6 +35,11 @@ export const Stack = ({ children, direction, ...props }) => (
   </StackStyled>
 );
 
+export const StackX = styled(Stack)`
+  flex-direction: row;
+  align-items: center;
+`;
+
 Stack.defaultProps = {
   direction: "row",
   gap: "16px",
@@ -385,10 +390,6 @@ export const modalCSS = css`
   }
 `;
 
-export const textMonoCSS = css`
-  font-family: monospace;
-`;
-
 // =========
 
 const rotate = keyframes`
@@ -408,8 +409,13 @@ export const rotateCSS = css`
   width: 20px;
   height: 20px;
   background: tomato;
+
+  // 🍀 No-motion first approach
+  // https://www.tatianamac.com/posts/prefers-reduced-motion/
+  // By default do not animate stuff...
   animation: none;
 
+  // ...unless the user clearly states not having a preferece
   @media (prefers-reduced-motion: no-preference) {
     animation: ${rotate} 4s linear infinite;
   }

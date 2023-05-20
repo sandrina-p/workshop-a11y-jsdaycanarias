@@ -5,40 +5,29 @@ import { linkCSS } from "../Button";
 import { Stack } from "../Layout";
 import { useContextExercise } from "./LayoutExercise";
 
-const Container = styled(Stack)`
-  gap: 0;
-`;
-
 const PanelStart = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 50%;
-  flex-shrink: 0;
-  border-right: 1px dashed var(--theme-primary);
   padding-right: 16px;
-
-  @media (min-width: 75em) {
-    // 75em = 1200px
-    width: calc(50% + 20rem); // @TODO responsive
-  }
+  width: auto;
 `;
 
 const PanelEnd = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  flex-grow: 1;
+  font-size: 1.4rem;
   padding-left: 16px;
 `;
 
-const PanelContent = styled.div`
+const PanelContent = styled(Stack)`
+  align-items: flex-start;
   width: 100%;
   max-width: var(--theme-width);
 
   details {
     cursor: pointer;
-    max-width: 45ch;
-    margin-bottom: 24px;
+  }
+
+  summary {
+    white-space: nowrap;
   }
 
   ul {
@@ -47,6 +36,45 @@ const PanelContent = styled.div`
 
   li {
     margin-bottom: 4px;
+  }
+`;
+
+const Container = styled(Stack)`
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @media (min-width: 43em) {
+    gap: 0;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    ${PanelStart} {
+      width: calc(100% - 30ch);
+      // 75em = 1200px
+      /* width: calc(50% + 20rem); */
+    }
+
+    ${PanelEnd} {
+      width: 30ch;
+      /* min-width: 100%;
+      max-width: 40ch; */
+      border-left: 1px dashed var(--theme-primary);
+    }
+
+    ${PanelEnd} ${PanelContent} {
+      flex-direction: column;
+      max-width: 44ch;
+    }
+  }
+
+  @media (min-width: 56em) {
+    ${PanelStart} {
+      width: calc(50% + 20rem);
+    }
+
+    ${PanelEnd} {
+      width: 50%;
+    }
   }
 `;
 
