@@ -17,6 +17,8 @@ function CaseAnimation() {
   const reducedMotion = false;
 
   async function getLuckyDay() {
+    if (isLoading) return;
+
     setIsLoading(true);
     setDay(""); // reset the day
 
