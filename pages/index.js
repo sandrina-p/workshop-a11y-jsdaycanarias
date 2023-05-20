@@ -57,7 +57,9 @@ export default function Home() {
 
         <main>
           <Title>A11Y in JS apps</Title>
-          <Kicker>The web is awesome and everyone should enjoy it.</Kicker>
+          <Kicker>
+            The web is awesome and everyone should be able to enjoy it.
+          </Kicker>
 
           {/* <Banner $tone="danger">
             <span>
