@@ -1,59 +1,44 @@
-import styled from "styled-components";
+import * as Tooltip from "@radix-ui/react-tooltip";
+import styled, { keyframes } from "styled-components";
 
-export const Tooltip = styled.div`
-  position: relative;
-  display: inline-block;
+const fadeIn = keyframes`
+ 0% { opacity: 0; }
+ 100% { opacity: 1; }
 `;
 
-export const TooltipBox = styled.div`
-  position: absolute;
-  width: 150px;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-bottom: 8px; /* use padding to preserve hover when moving cursor between the tooltip button and the tooltipItself */
-
-  opacity: 0;
-  visibility: hidden;
-
-  /* delay 250ms to give time to fade out */
-  transition: opacity 250ms, visibility 1ms 250ms;
-
-  ${Tooltip}:hover &,
-  ${Tooltip}:focus-within & {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 250ms;
-  }
-
-  ${Tooltip}:hover & {
-    /* delay fadein 500ms to prevent accidental hovers */
-    transition: opacity 250ms 500ms;
-  }
-`;
-
-export const TooltipItself = styled.div`
-  --bg: var(--theme-text_0);
-  color: var(--theme-text_invert);
-  font-size: 1.5rem;
-  position: relative;
-  display: block;
-  background: var(--bg);
+const TooltipContent = styled(Tooltip.Content)`
+  background: hsl(266deg 100% 15%);
+  color: hsl(266deg 100% 96%);
+  line-height: 1.2;
   padding: 6px 8px;
+  font-size: 1.3rem;
   border-radius: 4px;
   text-align: center;
-  -webkit-font-smoothing: initial;
-  -moz-osx-font-smoothing: initial;
-
-  &::after {
-    width: 10px;
-    height: 10px;
+  max-width: 10rem;
+  animation: ${fadeIn} 250ms ease-out;
+  &::before {
     content: "";
-    display: block;
     position: absolute;
-    bottom: -4px;
-    left: calc(50% - 5px);
-    background: var(--bg);
-    transform: rotate(45deg);
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
   }
 `;
+
+function TooltipArea({ Trigger, content, ...props }) {
+  return (
+    <Tooltip.Provider delayDuration={250}>
+      <Tooltip.Root {...props}>
+        <Tooltip.Trigger asChild>{Trigger}</Tooltip.Trigger>
+        <Tooltip.Portal>
+          <TooltipContent sideOffset={7}>{content}</TooltipContent>
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  );
+}
+
+export { TooltipArea as Tooltip };

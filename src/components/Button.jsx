@@ -23,9 +23,8 @@ export const buttonCSS = css`
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1;
-  margin-right: 8px;
 
-  &:hover {
+  &:hover:not(:disabled, [aria-disabled="true"]) {
     opacity: 0.8;
   }
 
@@ -43,6 +42,13 @@ export const buttonCSS = css`
   &:focus-visible {
     outline: 1px solid transparent; /* [1] */
     box-shadow: var(--theme-focus_shadow);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    background-color: #aaa;
+    border-color: #aaa;
+    cursor: not-allowed;
   }
 `;
 

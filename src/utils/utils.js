@@ -7,6 +7,29 @@ export function fakeWaitTime(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/**
+ *
+ * @param {Number} page - Page number
+ * @returns {Array<{ id: Number}>} List of products with just id
+ */
+export async function fetchProducts(page) {
+  console.log("Loading products from page:", page);
+
+  if (page === 7) {
+    // Simulate a problem with this page for demo purposes.
+    await fakeWaitTime(500);
+    throw Error("Page 7 is unstable.");
+  }
+
+  await fakeWaitTime(2500);
+
+  // Return a dummy array of 10 items. Each item is an object. eg
+  // [{ id: 20 }, { id: 21 }, { id: 22 }, { id: 23 }, ...]
+  return Array.from(Array(10), (_, i) => ({
+    id: `${page}${i}`,
+  }));
+}
+
 export async function fetchFakeLottery(time = 1500, defaultResultType) {
   const possibilities = ["win", "lose", "error"];
   const resultType =

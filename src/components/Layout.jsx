@@ -87,6 +87,10 @@ export const TextNote = styled(Text)`
   color: var(--theme-text_1);
 `;
 
+export const TextError = styled(Text)`
+  color: var(--theme-error);
+`;
+
 ////////////////
 
 const CardLinkWrapper = styled(Box).attrs({ as: "article" })`
