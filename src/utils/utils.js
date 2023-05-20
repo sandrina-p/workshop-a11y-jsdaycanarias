@@ -30,7 +30,13 @@ export function randomNr(min, max) {
   return Math.floor(min + Math.random() * (max - min + 1));
 }
 
-export function shuffleDays(onUpdate) {
+/**
+ * A function that quickly iterates over
+ * all week days in random order until it's cancelled
+ * @param {Function} onUpdate - Callback with the new day
+ * @returns {Function} - Function to cancel the animation
+ */
+export function shuffleDaysAnimation(onUpdate) {
   const days = [
     "Sunday",
     "Monday",
@@ -65,9 +71,6 @@ export function usePrevious(value) {
   return ref.current;
 }
 
-// usePrefersReducedMotion from Josh W. Comeau — @joshwcomeau
-// https://www.joshwcomeau.com/snippets/react-hooks/use-prefers-reduced-motion/
-
 const QUERY = "(prefers-reduced-motion: no-preference)";
 const isRenderingOnServer = typeof window === "undefined";
 const getInitialState = () => {
@@ -78,6 +81,11 @@ const getInitialState = () => {
   return isRenderingOnServer ? true : !window.matchMedia(QUERY).matches;
 };
 
+/**
+ * usePrefersReducedMotion from Josh W. Comeau — @joshwcomeau
+ * @link https://www.joshwcomeau.com/snippets/react-hooks/use-prefers-reduced-motion/
+ * @returns {Boolean} - is motion preferences reduced or not.
+ */
 export function usePrefersReducedMotion() {
   const [prefersReducedMotion, setPrefersReducedMotion] =
     React.useState(getInitialState);
