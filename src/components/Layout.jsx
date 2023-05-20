@@ -189,11 +189,11 @@ const CaseVariant = styled.span`
   color: var(--theme-text_1);
 `;
 
-export function Case({ title, children }) {
+export function Case({ title, children, ...props }) {
   const { variant } = useContextExercise();
 
   return (
-    <CaseBox>
+    <CaseBox {...props}>
       <CaseVariant>{variant}</CaseVariant>
       {title && <CaseTitle className="g-cardTitle">{title}</CaseTitle>}
       {children}
