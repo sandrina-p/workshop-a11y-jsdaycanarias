@@ -4,7 +4,7 @@ import { css } from "styled-components";
 
 import { Button, buttonToggleCSS } from "../src/components/Button";
 import { Case, IconHeart, Stack } from "../src/components/Layout";
-import { ActionsItems, actionsContainerCSS } from "./2_toggleable.exercise";
+import { ActionsItems } from "./2_toggleable.exercise";
 
 function CaseToggleButtons() {
   const [isActiveA, setIsActiveA] = React.useState(false);
@@ -42,46 +42,54 @@ function CaseToggleButtons() {
 // ===============
 // ===============
 
+const actionsContainerCSS = css`
+  position: relative;
+  width: min-content;
+  margin-bottom: 8px;
+  --val: calc(100% + 2px); /*2px for focus shadow space */
+`;
+
 const actionsListCSS = css`
   position: absolute;
   top: 0.4rem;
   left: 100%;
   clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
-  transition: clip-path 150ms ease-in, visibility 1ms 200ms;
+  transition: clip-path 150ms ease-in;
 
   &[data-open="true"] {
-    transition: clip-path 200ms ease-out, visibility 1ms 1ms;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transition: clip-path 200ms ease-out;
   }
 `;
 
 function CaseSolutionCollapsingContent() {
   return (
     <Case title="Collapsed content">
-      <ActionsMenuInhert />
-      <ActionsMenuVisibility />
+      <ActionsMenuUsingInert />
+      <br />
+      <ActionsMenuUsingVisibility />
     </Case>
   );
 }
 
-function ActionsMenuInhert() {
+function ActionsMenuUsingInert() {
   const [isActionsOpen, setIsActionsOpen] = React.useState(false);
   const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
 
   return (
     <div>
       <p>Using attr inert</p>
-      <div css={actionsContainerCSS}>
+      <nav css={actionsContainerCSS}>
         <Button
           onClick={toggleActionsOpen}
-          // 💡 aria-expanded tells the SR this will expand something else.
+          // 💡 Bonus: aria-expanded tells the SR this will show (expand) something.
           aria-expanded={isActionsOpen}
-          // 💡 aria-controls allows jumping directly to the menu (only JAWS supports it)
+          // 💡 Bonus: aria-controls allows jumping directly to the menu (only JAWS supports it)
           aria-controls="actionsWithInert"
         >
           Actions
         </Button>
-        <nav
+        <div
           data-open={isActionsOpen}
           // 💡 The inert needs a polyfill "wicg-inert" (imported at _app.js)
           // to work properly in every modern browser.
@@ -90,33 +98,43 @@ function ActionsMenuInhert() {
           id="actionsWithInert"
         >
           <ActionsItems />
-        </nav>
-      </div>
+        </div>
+      </nav>
     </div>
   );
 }
 
 const cssActionsListVisibility = css`
-  ${actionsListCSS};
+  position: absolute;
+  top: 0.4rem;
+  left: 100%;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
 
-  /* Make the visibility change only after clip-path transition is finished (delay of 200ms */
-  transition: clip-path 150ms ease-in, visibility 1ms 150ms;
-  /* hide it from Assistive Technologies (ie. Keyboard, Screen Readers, etc...) */
+  /* 💡 Hide it (visually and semantically) */
   visibility: hidden;
 
+  /* 💡 CSS Trick: */
+  /* When hiding, add 150ms delay to the visibility, 
+  so it waits for the clip-path transition */
+  transition: clip-path 150ms ease-in, visibility 1ms 150ms;
+
   &[data-open="true"] {
+    /* 💡 Show it (visually and semantically)  */
     visibility: visible;
+
+    /* 💡 CSS trick: When showing, visibility does not need a transition. */
     transition: clip-path 200ms ease-out;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 `;
 
-function ActionsMenuVisibility() {
+function ActionsMenuUsingVisibility() {
   const [isActionsOpen, setIsActionsOpen] = React.useState(false);
   const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
 
   return (
     <div>
-      <p>Using CSS visibility</p>
+      <p>Bonus: Using CSS "visibility: hidden"</p>
       <nav css={actionsContainerCSS}>
         <Button
           onClick={toggleActionsOpen}
@@ -139,11 +157,13 @@ function ActionsMenuVisibility() {
   );
 }
 
+// ============
+
 function CaseToggleButtonText() {
   const [isActive, setIsActive] = React.useState(false);
 
   return (
-    <Case title="Toggle toggle with text">
+    <Case title="Toggle state and text">
       <Stack>
         <button
           onClick={() => setIsActive((status) => !status)}

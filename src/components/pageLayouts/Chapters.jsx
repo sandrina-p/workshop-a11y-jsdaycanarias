@@ -22,20 +22,26 @@ const PanelContent = styled(Stack)`
   width: 100%;
   max-width: var(--theme-width);
 
-  details {
-    cursor: pointer;
-  }
+  ${PanelEnd} & {
+    details {
+      cursor: pointer;
+    }
 
-  summary {
-    white-space: nowrap;
-  }
+    summary {
+      white-space: nowrap;
+    }
 
-  ul {
-    margin: 0;
-  }
+    ul {
+      margin: 0;
+    }
 
-  li {
-    margin-bottom: 4px;
+    li {
+      margin-bottom: 4px;
+    }
+
+    a {
+      ${linkCSS}
+    }
   }
 `;
 
@@ -50,20 +56,16 @@ const Container = styled(Stack)`
 
     ${PanelStart} {
       width: calc(100% - 30ch);
-      // 75em = 1200px
-      /* width: calc(50% + 20rem); */
     }
 
     ${PanelEnd} {
       width: 30ch;
-      /* min-width: 100%;
-      max-width: 40ch; */
       border-left: 1px dashed var(--theme-primary);
     }
 
     ${PanelEnd} ${PanelContent} {
       flex-direction: column;
-      max-width: 44ch;
+      max-width: 50ch;
     }
   }
 
