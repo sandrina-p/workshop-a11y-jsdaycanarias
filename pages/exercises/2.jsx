@@ -8,5 +8,9 @@ export default function Page() {
 }
 
 Page.getLayout = function getLayout(page) {
-  return <LayoutExercise title="Toggleable interfaces">{page}</LayoutExercise>;
+  return (
+    <LayoutExercise title="Exercise 2: Toggleable interfaces">
+      {page}
+    </LayoutExercise>
+  );
 };

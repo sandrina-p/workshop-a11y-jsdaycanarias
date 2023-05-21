@@ -8,5 +8,7 @@ export default function Page() {
 }
 
 Page.getLayout = function getLayout(page) {
-  return <LayoutExercise title="Form validations">{page}</LayoutExercise>;
+  return (
+    <LayoutExercise title="Exercise 4: Form validations">{page}</LayoutExercise>
+  );
 };

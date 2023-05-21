@@ -8,5 +8,5 @@ export default function Page() {
 }
 
 Page.getLayout = function getLayout(page) {
-  return <LayoutExercise title="Routing">{page}</LayoutExercise>;
+  return <LayoutExercise title="Exercise 1: Routing">{page}</LayoutExercise>;
 };

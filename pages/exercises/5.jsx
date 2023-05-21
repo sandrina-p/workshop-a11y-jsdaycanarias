@@ -8,5 +8,5 @@ export default function Page() {
 }
 
 Page.getLayout = function getLayout(page) {
-  return <LayoutExercise title="Animations">{page}</LayoutExercise>;
+  return <LayoutExercise title="Exercise 5: Animations">{page}</LayoutExercise>;
 };
