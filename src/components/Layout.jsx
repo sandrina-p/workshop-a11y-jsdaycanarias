@@ -35,9 +35,12 @@ export const Stack = ({ children, direction, ...props }) => (
   </StackStyled>
 );
 
-export const StackX = styled(Stack)`
-  flex-direction: row;
+export const StackXCenter = styled(Stack)`
   align-items: center;
+`;
+
+export const StackY = styled(Stack)`
+  flex-direction: column;
 `;
 
 Stack.defaultProps = {
@@ -395,6 +398,11 @@ export const modalCSS = css`
 `;
 
 // =========
+
+export const fadeIn = keyframes`
+ 0% { opacity: 0; }
+ 100% { opacity: 1; }
+`;
 
 const rotate = keyframes`
   0% {

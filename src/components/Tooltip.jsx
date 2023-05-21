@@ -1,10 +1,7 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const fadeIn = keyframes`
- 0% { opacity: 0; }
- 100% { opacity: 1; }
-`;
+import { fadeIn } from "./Layout";
 
 const TooltipContent = styled(Tooltip.Content)`
   background: hsl(266deg 100% 15%);

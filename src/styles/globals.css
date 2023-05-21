@@ -97,3 +97,11 @@ code {
   border-radius: 3px;
   padding: 0 2px;
 }
+
+dialog {
+  color: inherit;
+
+  &::backdrop {
+    background-color: rgba(77, 77, 77, 0.7);
+  }
+}

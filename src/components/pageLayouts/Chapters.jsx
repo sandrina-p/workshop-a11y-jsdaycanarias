@@ -124,7 +124,7 @@ function Chapter({
             </details>
           )}
 
-          {variant === "solution" && (
+          {variant === "solution" && explanation && (
             <details>
               <summary>🔥 Solution explained</summary>
               <ReactMarkdown>{explanation}</ReactMarkdown>

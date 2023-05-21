@@ -1,7 +1,7 @@
 import React from "react";
 
 import { buttonCSS, buttonOutlineCSS } from "../src/components/Button";
-import { Case, StackX, rotateCSS } from "../src/components/Layout";
+import { Case, StackXCenter, rotateCSS } from "../src/components/Layout";
 import {
   fakeWaitTime,
   shuffleDaysAnimation,
@@ -39,7 +39,7 @@ export function CaseAnimation() {
 
   return (
     <Case title="Animations personalized">
-      <StackX mb="16px">
+      <StackXCenter mb="16px">
         <button onClick={getLuckyDay} css={buttonCSS}>
           Reavel the lucky day
         </button>
@@ -48,7 +48,7 @@ export function CaseAnimation() {
         </button>
 
         <p>Motion: {reducedMotion ? "reduced" : "no-preference"}</p>
-      </StackX>
+      </StackXCenter>
 
       {/* 💡 Accessible Loading - Always set an invisible loading for SRs... */}
       {isLoading && (
