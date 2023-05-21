@@ -102,8 +102,8 @@ export default function Home() {
           <CardLink title="Advanced: Dialog (Modal)" href="exercises/6">
             What does it take to build an accessible Dialog?
           </CardLink>
-          <CardLink title="Advanced: Power users" href="exercises/7">
-            Keyboard has 101 keys. Let's go beyond the <code>Tab</code> key.
+          <CardLink title="Advanced: Advanced keyboard" href="exercises/7">
+            Keyboards have +100 keys. Let's go beyond the <code>Tab</code> key.
           </CardLink>
         </main>
         <Footer />
