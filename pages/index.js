@@ -85,7 +85,7 @@ export default function Home() {
           </Stack>
 
           <CardLink title="Routing" href="exercises/1">
-            How routing affects navigation links
+            divs, buttons, or anchors?
           </CardLink>
           <CardLink title="Toggleable interfaces" href="exercises/2">
             Every click is an interaction, but not every interaction is a click

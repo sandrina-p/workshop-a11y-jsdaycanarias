@@ -112,10 +112,16 @@ My **personal decision tree** between both: If you can "bookmark" the link, then
     explanation: `
 Whenever you create a shortcut, remember to also update the keyboard position (focus).
 
-In this case, you can force an element to be focused 
-by using [\`.focus()\` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) with \`tabindex="-1"\` attribute.
+To do so, you need to turn the target (the title) into an focusable element 
+using \`tabindex="-1"\` attribute, and then move the focus to it using the [\`.focus()\` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
 
-Although tricky, remember that JS allows us to have almost full control of the focus management.
-    `,
+The \`-1\` tells that the element is programatically focusable. 
+Pressing \`Tab\` doesn't focus it, just by using JavaScript.
+
+---
+Although tricky, know that JS allows us to have almost full control of the focus management in a webapp.
+
+If you ever need more advanced focus managements, I recommend you to look at [\`discord/focus-ring\`](https://github.com/discord/focus-rings) and [\`react-aria\` focus hooks](https://react-spectrum.adobe.com/react-aria/FocusScope.html).
+`,
   },
 ];
