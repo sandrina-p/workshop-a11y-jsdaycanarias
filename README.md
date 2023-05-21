@@ -86,6 +86,27 @@ I **highly encourage** you to [practice with this simple webpage](https://sgwvk.
 
 Good luck 🤞
 
+## Workshop Dynamics
+
+This project uses [NextJS](https://nextjs.org/) with React 18.
+
+The workshop will consist of a set of challenges.  
+Each one introduces a new topic, followed by a code exercise for you to apply the concepts learned.
+After each exercise, we'll go through the solution together and clarify any question you might have.
+
+```bash
+exercises/
+  *.exercise.jsx # Where you'll be coding
+  *.solution.jsx # The solutions with explanations
+* # You can ignore everything else.
+```
+
+### Expectations
+
+- **Time value:** I don't expect you to complete all the exercises on time. The main goal is to introduce you to new things, to make you think about them, and ask me questions as we go through the materials.
+- **Guidance & tips:** Through the exercises, you'll find the light bulb emoji 💡 to guide you, and the lucky clover emoji 🍀 with extra tips for you to apply right away.
+- **Solutions:** Although all the exercises have explained solutions, check them as a last resource. If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
+
 ---
 
 ## License
