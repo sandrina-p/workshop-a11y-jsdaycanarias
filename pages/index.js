@@ -47,10 +47,10 @@ export default function Home() {
     <>
       <HomeShell>
         <Head>
-          <title>A11Y in JS @ReactAlicante</title>
+          <title>A11Y in JS @JSDayCanarias</title>
           <meta
             name="description"
-            content="Workshop - A11Y in JS apps at @reactAlicante"
+            content="Workshop - A11Y in JS apps at @JSDayCanarias"
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>

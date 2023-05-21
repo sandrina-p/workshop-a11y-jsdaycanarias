@@ -127,9 +127,7 @@ export function Footer() {
           </Feedback>
           <FooterCredits>
             Last update:{" "}
-            <time dateTime="2022-09-27T21:51:00Z">
-              28 September 2022 · 21:51 UTC
-            </time>
+            <time dateTime="2023-05-21T16:41:00Z">21 May 2023 · 16:41 UTC</time>
           </FooterCredits>
           <p>
             Made without coffee by{" "}
@@ -145,7 +143,7 @@ export function Footer() {
 
           <FooterCredits>© 2022 All Rights Reserved.</FooterCredits>
           <p>
-            <Link href="https://github.com/sandrina-p/workshop-a11y-react-alicante">
+            <Link href="https://github.com/sandrina-p/workshop-a11y-jsdaycanarias">
               Source code
             </Link>
             .

@@ -32,10 +32,10 @@ Install [Git](https://git-scm.com/) and [NodeJS](https://nodejs.org/en/).
 
 ```bash
 # Clone the repository
-git clone https://github.com/sandrina-p/workshop-a11y-react-alicante
+git clone https://github.com/sandrina-p/workshop-a11y-jsdaycanarias
 
 # Go to workshop folder
-cd workshop-a11y-react-alicante
+cd workshop-a11y-react-jsdaycanarias
 
 # Install the dependencies
 npm install
@@ -44,7 +44,9 @@ npm install
 npm run dev
 ```
 
-Open [//localhost:3005/](http://localhost:3005/).
+Open [localhost:3005](http://localhost:3005/).
+
+If you have any problem, reach me directly at a.sandrina.p@gmail.com
 
 ---
 
@@ -65,7 +67,7 @@ At some point, we'll might also use the following:
 
 ## Screen Readers
 
-We'll explore SR (Screen Reader), however during a remote workshop it's not practical to teach everyone how to use a SR. Here's some friendly video tutorials for you to practice in the meantime:
+We'll explore SR (Screen Reader), however during a remote workshop it's not practical to teach everyone how to use a SR. Here's some friendly video tutorials for you to practice ahead of time:
 
 - Mac: You'll use VO (Voice Over) [Watch VO introduction](https://www.youtube.com/watch?v=5R-6WvAihms&t=198s).
 - Windows: Install [NVDA](https://www.nvaccess.org/) and [watch NVDA introduction](https://www.youtube.com/watch?v=Jao3s_CwdRU).
@@ -76,7 +78,7 @@ My favorite cheatsheet of keyboard shortcuts:
 - [VO and NVDA cheatsheet](https://dequeuniversity.com/screenreaders/survival-guide)
 - [Orca cheatsheet](https://help.gnome.org/users/orca/stable/commands_controlling_orca.html.en).
 
-I encourage you to [practice with this playground](https://sgwvk.csb.app/).
+I **highly encourage** you to [practice with this simple webpage](https://sgwvk.csb.app/).
 
 **Tip:** While the SR is speaking, press `Control` key to force it to stop reading it. This might help you to reduce the annoying/frustration feeling while exploring it.
 
