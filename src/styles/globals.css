@@ -96,6 +96,7 @@ code {
   background: #ddd;
   border-radius: 3px;
   padding: 0 2px;
+  color: var(--theme-text_0);
 }
 
 dialog {

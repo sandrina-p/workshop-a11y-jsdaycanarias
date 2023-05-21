@@ -1,18 +1,18 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 
+import svgChat from "../public/imgs/chat.svg";
 import imgGSlides from "../public/imgs/gslides.png";
-import imgSlack from "../public/imgs/slack.png";
 import { Footer } from "../src/components/Footer";
 import {
+  Banner,
   CardLink,
   LinkExternal,
   PageShell,
   Stack,
 } from "../src/components/Layout";
-
-/*eslint-disable @next/next/no-img-element */
 
 const HomeShell = styled(PageShell)`
   max-width: none;
@@ -61,7 +61,7 @@ export default function Home() {
             The web is awesome and everyone should be able to enjoy it.
           </Kicker>
 
-          {/* <Banner $tone="danger">
+          <Banner $tone="danger">
             <span>
               <span className="sr-only">Work in progress</span>
               <span aria-hidden="true">🚧 🚧 🚧</span>
@@ -71,16 +71,16 @@ export default function Home() {
               minutes before the workshop starts.
               <br /> (this banner will then disappear).
             </p>
-          </Banner> */}
+          </Banner>
 
           <Stack justifyContent="center">
             <LinkExternal href="https://docs.google.com/presentation/d/1x_d9KlXnoGMsaY3QUSFtLphMpwwteSbyuETvITGgF4s/edit?usp=sharing">
               <Image src={imgGSlides} alt="" />
               Google Slides
             </LinkExternal>
-            <LinkExternal href="https://join.slack.com/t/reactalicante/shared_invite/zt-1gttdn137-CnfS61yfY~0plpmmILv_ug">
-              <Image src={imgSlack} alt="" />
-              #workshop-a11y
+            <LinkExternal href="https://t.me/+B4U8BBq4jaI1YTE0">
+              <Image src={svgChat} alt="" />
+              Telegram Group
             </LinkExternal>
           </Stack>
 
@@ -100,11 +100,11 @@ export default function Home() {
             Making animations more accessible.
           </CardLink>
           <CardLink title="Advanced: Dialog (Modal)" href="exercises/6">
-            What does it make to build an accessible Dialog (Modal)?
+            What does it take to build an accessible Dialog?
           </CardLink>
-          <CardLink title="Advanced: Tabs" href="exercises/7">
-            What does it make to build an accessible Tabs component?
-          </CardLink>
+          {/* <CardLink title="Advanced: Power users" href="exercises/7">
+            Keyboard has 101 keys. Let's go beyond the <code>Tab</code> key.
+          </CardLink> */}
         </main>
         <Footer />
       </HomeShell>
