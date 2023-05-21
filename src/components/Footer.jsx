@@ -141,7 +141,7 @@ export function Footer() {
             .
           </p>
 
-          <FooterCredits>© 2022 All Rights Reserved.</FooterCredits>
+          <FooterCredits>© 2023 All Rights Reserved.</FooterCredits>
           <p>
             <Link href="https://github.com/sandrina-p/workshop-a11y-jsdaycanarias">
               Source code

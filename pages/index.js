@@ -85,25 +85,28 @@ export default function Home() {
           </Stack>
 
           <CardLink title="Routing" href="exercises/1">
-            divs, buttons, or anchors?
+            A div, a button, and a link walked into a bar...
           </CardLink>
           <CardLink title="Toggleable interfaces" href="exercises/2">
             Every click is an interaction, but not every interaction is a click
           </CardLink>
           <CardLink title="Loading content" href="exercises/3">
-            Handling async actions with accessible loadings and results.
+            Handling async actions with accessible loadings and results
           </CardLink>
           <CardLink title="Form fields validations" href="exercises/4">
             If filling forms is boring, imagine filling an unaccessible one!
           </CardLink>
           <CardLink title="Animations" href="exercises/5">
-            Making animations more accessible.
+            Making JS animations more accessible
           </CardLink>
-          <CardLink title="Advanced: Dialog (Modal)" href="exercises/6">
+          <CardLink
+            title="Custom components: Dialog (Modal)"
+            href="exercises/6"
+          >
             What does it take to build an accessible Dialog?
           </CardLink>
-          <CardLink title="Advanced: Advanced keyboard" href="exercises/7">
-            Keyboards have +100 keys. Let's go beyond the <code>Tab</code> key.
+          <CardLink title="Advanced keyboard" href="exercises/7">
+            Keyboards have +100 keys. Let's go beyond the <code>Tab</code> key
           </CardLink>
         </main>
         <Footer />
