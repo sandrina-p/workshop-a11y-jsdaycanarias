@@ -74,7 +74,7 @@ At some point, we'll might also use the following:
 
 ## Screen Readers
 
-We'll explore SR (Screen Reader), however during a remote workshop it's not practical to teach everyone how to use a SR. Here's some friendly video tutorials for you to practice ahead of time:
+We'll explore SR (Screen Reader), however during a workshop it's not practical to teach everyone how to use a SR. Here's some friendly video tutorials for you to practice ahead of time:
 
 - Mac: You'll use VO (Voice Over) [Watch VO introduction](https://www.youtube.com/watch?v=5R-6WvAihms&t=198s).
 - Windows: Install [NVDA](https://www.nvaccess.org/) and [watch NVDA introduction](https://www.youtube.com/watch?v=Jao3s_CwdRU).
@@ -111,7 +111,7 @@ exercises/
 ### Expectations
 
 - **Time value:** I don't expect you to complete all the exercises on time. The main goal is to introduce you to new things, to make you think about them, and ask me questions as we go through the materials.
-- **Guidance & tips:** Through the exercises, you'll find the light bulb emoji 💡 to guide you, and the lucky clover emoji 🍀 with extra tips for you to apply right away.
+- **Guidance & tips:** Through the exercises, you'll find the light bulb emoji 💡 to guide you, and the lucky clover emoji 🍀 with extra tips for you about A11Y.
 - **Solutions:** Although all the exercises have explained solutions, check them as a last resource. If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
 
 ---
