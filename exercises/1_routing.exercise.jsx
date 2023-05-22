@@ -108,12 +108,13 @@ Make it work for keyboards too but wait... what's the difference between a \`<bu
       },
     ],
     briefing_bonus: `
-- [Creating a good focus indicator](https://www.sarasoueidan.com/blog/focus-indicators/): 
-The styles for \`:hover\` can be subtle, but \`:focus\` indicators _must stand out_,
+- **Focus indicators:**: The styles for \`:hover\` can be subtle, but \`:focus\` indicators _must stand out_,
 otherwise people will struggle to find it when using only the keyboard.
-In this website, all focus indicators are already compliant with [2.4.13 Focus Appearance](https://www.w3.org/TR/WCAG22/#focus-appearance). 
-- Next time you need to create a ["Go Back" link](https://stackoverflow.com/questions/72676015/react-router-go-back-using-link)
-be mindful of its caveats. You can check the code for the "Go back Home" in the header.
+Check how to create [compliant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/). In this workshop all focus indicators are already compliant with [2.4.13 Focus Appearance](https://www.w3.org/TR/WCAG22/#focus-appearance). 
+- **Go back links:** Next time you need to create a ["Go Back" link](https://stackoverflow.com/questions/72676015/react-router-go-back-using-link)
+be mindful of its caveats. You can check [this sandbox](https://codesandbox.io/s/a11y-into-js-forked-7oq2vq?file=/src/App.js) with the buggy behavior.
+- **Skip Links:** If your page has a header/nav with a lot of links, consider using [Skip Navigation Links](/extras/SkipNavigation) technique,
+so that keyboard users can quickly jump to the main content.
 `,
   },
   {

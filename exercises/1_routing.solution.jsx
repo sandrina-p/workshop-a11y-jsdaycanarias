@@ -104,7 +104,7 @@ The overall guideline is:
 - \`<a>\`: Used for any routing navigation.
 - \`<button>\`: Used for contextual actions within the page.
 
-My **personal decision tree** between both: If you can "bookmark" the link, then it should be \`<a>\`.
+My **personal decision tree** between both: If you want to _bookmark_ the link, then it should be \`<a>\`.
     `,
   },
   {
