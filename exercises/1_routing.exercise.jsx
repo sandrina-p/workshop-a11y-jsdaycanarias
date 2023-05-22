@@ -130,6 +130,10 @@ How do we fix it?
     `,
     resources: [
       {
+        name: "Accessible scroll to top",
+        url: "https://ashleemboyer.com/blog/accessible-smooth-scroll-to-top-buttons-with-little-code",
+      },
+      {
         name: "How to use tabindex",
         url: "https://www.a11yproject.com/posts/how-to-use-the-tabindex-attribute/",
       },

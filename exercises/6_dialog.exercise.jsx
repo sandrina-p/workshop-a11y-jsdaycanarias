@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import * as Dialog from "@radix-ui/react-dialog";
 import React, { useRef } from "react";
 import { css } from "styled-components";
