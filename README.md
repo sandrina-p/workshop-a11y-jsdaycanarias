@@ -48,6 +48,13 @@ Open [localhost:3005](http://localhost:3005/).
 
 If you have any problem, reach me directly at a.sandrina.p@gmail.com
 
+### Keyboard adjustments
+
+On Macbooks, by default pressing `Tab` to navigate a webpage might not work on Safari and Firefox. Here's the fix:
+
+- Safari: Open Safari Settings, go to "Advanced" and check "Press Tab to Highlight each item on a webpage". ([_source_](https://www.scottohara.me/blog/2014/10/03/link-tabbing-firefox-osx.html))
+- Firefox: Open Mac "System Preferences" > "Keyboard" > "Shorcuts" > Check at the bottom "All controls" or "Use keyboard navigation to move focus between controls" ([_source_](https://stackoverflow.com/a/11713537))
+
 ---
 
 ## Browser extensions
