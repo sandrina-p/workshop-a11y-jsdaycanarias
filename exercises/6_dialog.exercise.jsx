@@ -100,10 +100,7 @@ function InfoAboutCSSOnlyDialogs() {
           No, you cannot create an accessible dialog with just CSS.
         </TextError>{" "}
         (Code stolen from{" "}
-        <a
-          href="https://twitter.com/denicmarko/status/1350761109360414721"
-          css={linkCSS}
-        >
+        <a href="https://twitter.com/denicmarko/status/1350761109360414721">
           this tweet
         </a>
         )
@@ -160,10 +157,7 @@ function InfoAboutNativeDialog() {
     <StackY gap="16px" my="16px">
       <p>
         This uses the{" "}
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement#examples"
-          css={linkCSS}
-        >
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement#examples">
           <code>{"<dialog>"}</code> element
         </a>{" "}
         and essential requirement JS.

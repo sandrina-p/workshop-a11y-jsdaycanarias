@@ -67,6 +67,10 @@ function CaseSolutionCollapsingContent() {
       <ActionsMenuUsingInert />
       <br />
       <ActionsMenuUsingVisibility />
+
+      <p>
+        A <a href="#fake-link">dummy link</a> for demo purposes.
+      </p>
     </Case>
   );
 }

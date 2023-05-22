@@ -115,7 +115,7 @@ function Chapter({
               {resources?.map(({ name, url, extra }) => (
                 <li key={name}>
                   {extra ? "Extra: " : ""}
-                  <a href={url} css={linkCSS} target="_blank" rel="noreferrer">
+                  <a href={url} target="_blank" rel="noreferrer">
                     {name}
                   </a>
                 </li>

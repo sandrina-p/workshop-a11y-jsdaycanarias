@@ -95,11 +95,7 @@ function Exercise() {
       </div>
 
       <p>
-        A{" "}
-        <a href="#fake-link" css={linkCSS}>
-          dummy link
-        </a>{" "}
-        for demo purposes.
+        A <a href="#fake-link">dummy link</a> for demo purposes.
       </p>
     </Case>
   );

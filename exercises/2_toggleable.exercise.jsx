@@ -69,11 +69,7 @@ function CaseCollapsingContent() {
         </nav>
 
         <p>
-          Another{" "}
-          <a href="#" css={linkCSS}>
-            link
-          </a>{" "}
-          just for example.
+          A <a href="#fake-link">dummy link</a> for demo purposes.
         </p>
       </>
     </Case>

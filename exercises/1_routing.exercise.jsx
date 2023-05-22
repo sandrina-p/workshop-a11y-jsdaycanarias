@@ -46,9 +46,7 @@ function CaseBackToTop() {
                 <Image src={url} alt="Cat_photo" />
                 <div css={cssListCats.info}>
                   <span>{name}</span>
-                  <a href={`#cat-link/${name}`} css={linkCSS}>
-                    View
-                  </a>
+                  <a href={`#cat-link/${name}`}>View</a>
                 </div>
               </li>
             ))}
@@ -61,10 +59,7 @@ function CaseBackToTop() {
 
         <TextNote $align="center">
           Yes, I am cat person <span aria-hidden="true">😻</span>, check these{" "}
-          <a css={linkCSS} href="https://www.viagenpets.com/fun-cat-facts/">
-            fun cat facts
-          </a>
-          .
+          <a href="https://www.viagenpets.com/fun-cat-facts/">fun cat facts</a>.
         </TextNote>
       </Case>
     </>

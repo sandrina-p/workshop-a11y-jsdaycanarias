@@ -67,7 +67,7 @@ export function BackToTop() {
                 <Image src={url} alt="" />
                 <div css={cssListCats.info}>
                   <span>{name}</span>
-                  <a href={`#cat-link/${i}`} css={linkCSS}>
+                  <a href={`#cat-link/${i}`}>
                     View
                     {/* 💡 Make the link unique for SRs, using sr-only. */}
                     <SROnly>{name}</SROnly>
@@ -84,10 +84,7 @@ export function BackToTop() {
 
         <TextNote $align="center">
           Yes, I am cat person <span aria-hidden="true">😻</span>, check these{" "}
-          <a css={linkCSS} href="https://www.viagenpets.com/fun-cat-facts/">
-            fun cat facts
-          </a>
-          .
+          <a href="https://www.viagenpets.com/fun-cat-facts/">fun cat facts</a>.
         </TextNote>
       </Case>
     </>

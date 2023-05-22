@@ -24,7 +24,7 @@ function CaseSkipExercise() {
 
         <p>
           Learn more about{" "}
-          <a href="https://webaim.org/techniques/skipnav/" css={linkCSS}>
+          <a href="https://webaim.org/techniques/skipnav/">
             Skip Navigation Links
           </a>{" "}
           technique.
@@ -82,7 +82,7 @@ function CaseSkipSolution() {
     <Case title="Skip navigation">
       {/* 💡 1/2 Add the href pointing to the target element
        */}
-      <a href="#content" css={skipLinkCSS}>
+      <a href="#content">
         Skip navigation
         {/* 🍀 In real apps, this link is at the top of 
             the DOM (before "Home" and "Show solution") */}
@@ -100,7 +100,7 @@ function CaseSkipSolution() {
 
         <p>
           Learn more about{" "}
-          <a href="https://webaim.org/techniques/skipnav/" css={linkCSS}>
+          <a href="https://webaim.org/techniques/skipnav/">
             Skip Navigation Links
           </a>{" "}
           technique.

@@ -254,17 +254,6 @@ export function Footer() {
   return (
     <FooterStyled>
       <Stack justifyContent="center">
-        {/* <p>
-          Open this codesandbox at{' '}
-          <a
-            href="https://sandrina-p.net/a11y-in-js"
-            target="_blank"
-            rel="noreferrer"
-            css={linkCSS}
-          >
-            sandrina-p.net/a11y-in-js
-          </a>
-        </p> */}
         <p>
           <span>Made without coffee by </span>
           <a
