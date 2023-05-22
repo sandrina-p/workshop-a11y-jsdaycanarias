@@ -118,6 +118,7 @@ const CardLinkWrapper = styled(Box).attrs({ as: "article" })`
 `;
 
 const CardLinkTitle = styled.a`
+  position: initial; /* so the before grows until <article> */
   font-size: 1.8rem;
   font-weight: 500;
   display: inline-block;

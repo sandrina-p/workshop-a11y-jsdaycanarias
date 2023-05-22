@@ -166,35 +166,6 @@ function CaseRoving() {
 
 export const solutions = [
   {
-    Solution: CaseSkip,
-    explanation: `
-The solution requires two elements: A trigger and a target.
-
-- Trigger: a link at the top of the DOM pointing to the target by id
-
-      <a href="#content" class="skipLink">
-        Skip to main content
-      </a>
-
-- Target: The content element with the id matching the same name. Older browsers need \`tabindex="-1"\` too.
-
-      <main id="content" tabindex="-1">...</main>
-
-Finally we need to visually hide the skip links by default and only show it when focused.
-
-    .skipLink:not(:focus) {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      /* rest of .sr-only styles... */
-    }
-
-    .skipLink:focus {
-      /* link styles when it's focused */
-    }
-    `,
-  },
-  {
     Solution: CaseRoving,
     explanation: ``,
   },
