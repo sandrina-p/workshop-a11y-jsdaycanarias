@@ -185,7 +185,7 @@ There are [many ways to hide content](https://kittygiraudel.com/2021/02/17/hidin
 - \`display: none\` - Completely hidden: visually and sematically
 - \`opacity: 0\` - Visually hidden but accessible by keyboard
 
-For example, in the code bellow the button can still be focused:
+For example, in the code below the button can still be focused:
 
     <div style="opacity: 0">
       <button>Get started</button>

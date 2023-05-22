@@ -52,7 +52,7 @@ export function CaseAnimation() {
 
       {/* 💡 Accessible Loading - Always set an invisible loading for SRs... */}
       {isLoading && (
-        <p aria-live="assertive" class="sr-only">
+        <p aria-live="assertive" className="sr-only">
           Loading...
         </p>
       )}

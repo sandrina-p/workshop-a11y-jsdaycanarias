@@ -113,6 +113,8 @@ export const buttonToggleCSS = css`
 
 export const linkCSS = css`
   all: initial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   --linkClr: var(--theme-primary);
   position: relative;
   text-decoration: underline;

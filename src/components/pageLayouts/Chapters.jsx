@@ -42,6 +42,10 @@ const PanelContent = styled(Stack)`
     a {
       ${linkCSS}
     }
+
+    p {
+      margin-bottom: 8px;
+    }
   }
 `;
 
