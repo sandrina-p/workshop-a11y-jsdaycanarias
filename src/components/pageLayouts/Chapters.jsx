@@ -13,7 +13,7 @@ const PanelStart = styled.div`
 `;
 
 const PanelEnd = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding-left: 16px;
 `;
 

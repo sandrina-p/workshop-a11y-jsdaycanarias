@@ -123,10 +123,11 @@ details summary {
 
 pre,
 code {
-  background: #ddd;
+  background: #e6e6e6;
   border-radius: 3px;
   padding: 0 2px;
   color: var(--theme-text_0);
+  font-size: 1.4rem;
 }
 
 dialog {
