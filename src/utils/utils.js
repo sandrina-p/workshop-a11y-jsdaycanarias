@@ -132,3 +132,21 @@ export function usePrefersReducedMotion() {
   }, []);
   return prefersReducedMotion;
 }
+
+export function usePlayAudio() {
+  const audioOn = React.useRef();
+  const audioOff = React.useRef();
+  React.useEffect(() => {
+    audioOn.current = new Audio(
+      "https://freesound.org/data/previews/504/504847_9961300-lq.mp3"
+    );
+    audioOff.current = new Audio(
+      "https://cdn.freesound.org/previews/524/524205_9561949-lq.mp3"
+    );
+  }, []);
+
+  const setAudio = (isPlaying) =>
+    isPlaying ? audioOff.current.play() : audioOn.current.play();
+
+  return { setAudio };
+}
