@@ -50,6 +50,13 @@ export const buttonCSS = css`
     border-color: #aaa;
     cursor: not-allowed;
   }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--theme-text_invert);
+    stroke: var(--theme-text_invert);
+  }
 `;
 
 export const buttonOutlineCSS = css`

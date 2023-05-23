@@ -1,10 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { css } from "styled-components";
 
-import { buttonCSS } from "../src/components/Button";
+import { Button, buttonCSS } from "../src/components/Button";
 import { ButtonTop } from "../src/components/ButtonTop";
-import { Case, Stack, TextNote } from "../src/components/Layout";
+import {
+  Case,
+  IconCart,
+  Stack,
+  TextNote,
+  srOnlyStyles,
+} from "../src/components/Layout";
 import { cssListCats, dataCats } from "../src/utils/cats";
 
 function CaseLinkVsButton() {
@@ -14,16 +21,97 @@ function CaseLinkVsButton() {
     <>
       <Case title="What's a link?">
         <Stack gap="24px">
-          <div onClick={() => router.push(`/profile`)} css={buttonCSS}>
-            My profile A
+          {/* 💡 Let's analyze together the caveats of
+          each navigation strategy. */}
+          <div onClick={() => router.push(`/checkout`)} css={buttonCSS}>
+            Checkout div
           </div>
 
-          <Link href="/profile" passHref>
-            <a css={buttonCSS}>My profile B</a>
-          </Link>
+          <button css={buttonCSS} onClick={() => router.push(`/checkout`)}>
+            Checkout btn
+          </button>
+
+          <a href="/checkout" css={buttonCSS}>
+            Checkout anchor
+          </a>
+
+          {/* <Link href="/checkout">
+            <Button>Checkout link > btn</Button>
+          </Link> */}
+
+          {/* <Button>
+            <Link href="/checkout">Checkout btn > link</Link>
+          </Button> */}
+
+          <a href="/checkout" css={buttonCSS}>
+            <IconCart width="16px" />
+          </a>
         </Stack>
       </Case>
     </>
+  );
+}
+
+// ======================
+// ======================
+// ======================
+
+const skipCSS = css`
+  &:not(:focus) {
+    // 💡 2/4 Uncomment to apply the .sr-only styles
+    /* ${srOnlyStyles}; */
+  }
+
+  &:focus {
+    // 💡 3/4 Add styles when it's focused:
+  }
+`;
+
+function CaseSkip() {
+  return (
+    <Case title="Skip navigation">
+      {/* 💡 1/4 Add the Skip Link here */}
+      {/* <a href="" css={skipCSS}>
+        Skip to main content
+      </a> */}
+
+      <nav>
+        <ul css={stylesList}>
+          <li>
+            <a href="#a">Nav Link A</a>
+          </li>
+          <li>
+            <a href="#b">Nav Link B</a>
+          </li>
+          <li>
+            <a href="#c">Nav Link C</a>
+          </li>
+          <li>
+            <a href="#d">Nav Link D</a>
+          </li>
+          <li>
+            <a href="#e">Nav Link E</a>
+          </li>
+        </ul>
+      </nav>
+
+      {/* 💡 2/4 Connect the skip link to this <div> container */}
+      <div>
+        <p>
+          The "skip navigation" idea was invented to give screen reader and
+          keyboard users the same capability of going directly to the main
+          content, which most users take for granted.
+        </p>
+
+        <p>
+          Learn more about{" "}
+          <a href="https://webaim.org/techniques/skipnav/">
+            Skip Navigation Links
+          </a>{" "}
+          technique.
+        </p>
+      </div>
+    </Case>
   );
 }
 
@@ -82,6 +170,13 @@ function CaseBackToTop() {
 // *
 // *
 
+export const stylesList = css`
+  display: flex;
+  padding: 0;
+  gap: 16px;
+  list-style: none;
+`;
+
 export const cases = [
   {
     id: "CaseLinkVsButton",
@@ -90,7 +185,8 @@ export const cases = [
 You can open these two profiles with your mouse.   
 However, it doesn't work with the keyboard.
 
-Make it work for keyboards too but wait... what's the difference between a \`<button>\` and \`<a>\`?   
+The goal is to make it work for keyboards too. But wait... what's the difference between a \`<button>\` and \`<a>\`?  
+Let's explore that here. 
     `,
     resources: [
       {
@@ -108,9 +204,58 @@ otherwise people will struggle to find it when using only the keyboard.
 Check how to create [compliant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/). In this workshop all focus indicators are already compliant with [2.4.13 Focus Appearance](https://www.w3.org/TR/WCAG22/#focus-appearance). 
 - **Go back links:** Next time you need to create a ["Go Back" link](https://stackoverflow.com/questions/72676015/react-router-go-back-using-link)
 be mindful of its caveats. You can check [this sandbox](https://codesandbox.io/s/a11y-into-js-forked-7oq2vq?file=/src/App.js) with the buggy behavior.
-- **Skip Links:** If your page has a header/nav with a lot of links, consider using [Skip Navigation Links](/extras/SkipNavigation) technique,
-so that keyboard users can quickly jump to the main content.
 `,
+    // - **Skip Links:** If your page has a header/nav with a lot of links, consider using [Skip Navigation Links](/extras/SkipNavigation) technique,
+    // so that keyboard users can quickly jump to the main content.
+  },
+  {
+    id: "skipLinks",
+    Exercise: CaseSkip,
+    briefing: `
+Let's talk about the websites with a lot of links at the top of the page before the actual main content.
+I
+The keyboard-only users are forced to tab through every single link before they can reach the main content. 
+
+Similar to this exercise navigation. That isn't very good, right?
+
+We can solve then by using the "Skip Navigation" technique.
+
+This technique requires two elements: A trigger and a target.
+
+- Trigger: a link at the top of the DOM pointing to the target by id
+
+      <a href="#content" class="skipLink">
+        Skip to main content
+      </a>
+
+- Target: The content element with the id matching the same name. Older browsers need \`tabindex="-1"\` too.
+
+      <main id="content" tabindex="-1">...</main>
+
+Finally we need to visually hide the skip link, and show it only when focused.
+
+    .skipLink:not(:focus) {
+      /* .sr-only styles... */
+    }
+
+    .skipLink:focus {
+      /* link styles when it's visible (focused) */
+    }
+
+Go give it a try!
+    `,
+    resources: [
+      {
+        name: "Creating Skip Navigation links",
+        url: "https://a11y-101.com/development/skip-link",
+      },
+      {
+        name: "Example: Wall Street Journal",
+        url: "https://www.wsj.com/",
+        extra: true,
+      },
+    ],
+    briefing_bonus: ``,
   },
   {
     id: "CaseBackToTop",

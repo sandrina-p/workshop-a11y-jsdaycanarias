@@ -13,6 +13,9 @@ html {
   --theme-focus_shadow: var(--theme-bg_0) 0 0 0 2px,
     var(--theme-secondary) 0 0 0 4px;
   --theme-focus_outline: 2px solid transparent;
+
+  /* add padding to #anchor scrolls https://getpublii.com/blog/one-line-css-solution-to-prevent-anchor-links-from-scrolling-behind-a-sticky-header.html */
+  scroll-padding-top: 5rem;
 }
 
 body {
