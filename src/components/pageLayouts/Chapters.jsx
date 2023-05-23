@@ -83,6 +83,10 @@ function Chapter({
 }) {
   const { variant } = useContextExercise();
 
+  if (variant === "solution" && !Solution) {
+    return null;
+  }
+
   return (
     <Container>
       <PanelStart>
@@ -98,19 +102,21 @@ function Chapter({
             <ReactMarkdown>{briefing}</ReactMarkdown>
           </details>
 
-          <details>
-            <summary>References</summary>
-            <ul>
-              {resources?.map(({ name, url, extra }) => (
-                <li key={name}>
-                  {extra ? "Extra: " : ""}
-                  <a href={url} target="_blank" rel="noreferrer">
-                    {name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </details>
+          {resources && (
+            <details>
+              <summary>References</summary>
+              <ul>
+                {resources?.map(({ name, url, extra }) => (
+                  <li key={name}>
+                    {extra ? "Extra: " : ""}
+                    <a href={url} target="_blank" rel="noreferrer">
+                      {name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
 
           {briefing_bonus && (
             <details>
