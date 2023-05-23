@@ -4,18 +4,17 @@ import { css } from "styled-components";
 import { Button, buttonToggleCSS } from "../src/components/Button";
 import { Case, IconHeart, Stack, StackY } from "../src/components/Layout";
 import { usePlayAudio } from "../src/utils";
-import { ActionsList } from "./2_toggleable.exercise";
 
-const actionsContainerCSS = css`
+const menuContainerCSS = css`
   position: relative;
   width: min-content;
   margin: 8px 0;
   --val: calc(100% + 2px); /*2px for focus shadow space */
 `;
 
-const actionsListCSS = css`
+const menuToggleCSS = css`
   position: absolute;
-  top: 0.4rem;
+  top: 0;
   left: 100%;
   clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
   transition: clip-path 150ms ease-in;
@@ -29,9 +28,9 @@ const actionsListCSS = css`
 function CaseSolutionCollapsingContent() {
   return (
     <Case title="Collapsed content">
-      <ActionsMenuUsingInert />
+      <MenuUsingInert />
       <br />
-      <ActionsMenuUsingVisibility />
+      <MenuUsingVisibility />
 
       <p>
         A <a href="#fake-link">dummy link</a> for demo purposes.
@@ -40,43 +39,53 @@ function CaseSolutionCollapsingContent() {
   );
 }
 
-function ActionsMenuUsingInert() {
-  const [isActionsOpen, setIsActionsOpen] = React.useState(false);
-  const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
+function MenuUsingInert() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const toggleOpen = () => setIsOpen((status) => !status);
 
   return (
     <div>
       <p>
         Using <code>inert</code> attribute
       </p>
-      <nav css={actionsContainerCSS}>
+      <nav css={menuContainerCSS} aria-label="with inert">
         <Button
-          onClick={toggleActionsOpen}
+          onClick={toggleOpen}
           // 💡 Bonus: aria-expanded tells the SR this will show (expand) something.
-          aria-expanded={isActionsOpen}
+          aria-expanded={isOpen}
           // 💡 Bonus: aria-controls allows SR to go directly to the menu
           // But poor support https://github.com/w3c/aria/issues/995
-          aria-controls="actionsWithInert"
+          aria-controls="menuWithInert"
         >
-          Actions
+          Menu
         </Button>
         <div
-          data-open={isActionsOpen}
+          data-open={isOpen}
           // 💡 1/1 Add the inert attribute with explicit "true" value
           //   🍀 The inert needs a polyfill "wicg-inert" (already imported at _app.js)
           //      to work properly in every browser.
-          inert={isActionsOpen ? null : "true"}
-          css={actionsListCSS}
-          id="actionsWithInert"
+          inert={isOpen ? null : "true"}
+          css={menuToggleCSS}
+          id="menuWithInert"
         >
-          <ActionsList />
+          <ul css={menuListCSS}>
+            <li>
+              <a href="/home">Home</a>
+            </li>
+            <li>
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+              <a href="/settings">Settings</a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
   );
 }
 
-const cssActionsListVisibility = css`
+const cssMenuVisibility = css`
   position: absolute;
   top: 0.4rem;
   left: 100%;
@@ -100,31 +109,37 @@ const cssActionsListVisibility = css`
   }
 `;
 
-function ActionsMenuUsingVisibility() {
-  const [isActionsOpen, setIsActionsOpen] = React.useState(false);
-  const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
+function MenuUsingVisibility() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const toggleOpen = () => setIsOpen((status) => !status);
 
   return (
     <div>
       <p>
         Bonus: Using CSS <code>visibility: hidden</code>
       </p>
-      <nav css={actionsContainerCSS}>
+      <nav css={menuContainerCSS} aria-label="with css">
         <Button
-          onClick={toggleActionsOpen}
+          onClick={toggleOpen}
           // 💡 Tell the menu status (expanded vs collapsed)
-          aria-expanded={isActionsOpen}
+          aria-expanded={isOpen}
           // 💡 Allows SR to jump directly to the respective menu
-          aria-controls="actionsWithVisibility"
+          aria-controls="menuWithVisibility"
         >
-          Actions
+          Menu
         </Button>
-        <div
-          css={cssActionsListVisibility}
-          data-open={isActionsOpen}
-          id="actionsWithVisibility"
-        >
-          <ActionsList />
+        <div css={cssMenuVisibility} data-open={isOpen} id="menuWithVisibility">
+          <ul css={menuListCSS}>
+            <li>
+              <a href="/home">Home</a>
+            </li>
+            <li>
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+              <a href="/settings">Settings</a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
@@ -221,21 +236,43 @@ function CaseToggleButtonText() {
   );
 }
 
-// ===============
-// ===============
-// ===============
+// ========================
+// You can ignore this part
+// ========================
+
+// *
+// *
+// *
+// *
+// *
+// *
+// *
+// *
+// *
+// *
+// *
+
+const menuListCSS = css`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 12px;
+  display: flex;
+  margin-left: 8px;
+  padding: 4px;
+`;
 
 export const solutions = [
   {
     Solution: CaseSolutionCollapsingContent,
     explanation: `
 Using inert:   
-When the the actions list is visible, add \`inert="true"\` to its container. Short and simple!   
+When the the menu is visible, add \`inert="true"\` to its container. Short and simple!   
 Note: We need the [\`wicg-inert\` polyfill](https://github.com/WICG/inert) for older browsers.
 
 Using CSS:   
-When the list is hidden set \`visibility:hidden\`, and when it's visible, set \`visibility:visible\`.   
-To preserve the "slide-out" CSS transition when the list closes, we need to apply a \`transition\` delay to the \`visibility\` property,
+When the menu is hidden set \`visibility:hidden\`, and when it's visible, set \`visibility:visible\`.   
+To preserve the "slide-out" CSS transition when the menu closes, we need to apply a \`transition\` delay to the \`visibility\` property,
 so that it changes only after the slide with \`clip-path\` ends.
 
     `,

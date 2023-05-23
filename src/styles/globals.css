@@ -74,9 +74,11 @@ a {
   font-size: inherit;
   cursor: pointer;
 }
-a:hover::before {
-  transform: scale(1, 1);
+
+a:hover {
+  color: var(--linkClr);
 }
+
 a:focus:not(:focus-visible) {
   outline: none;
 }

@@ -5,16 +5,16 @@ import { Button, buttonToggleCSS } from "../src/components/Button";
 import { Case, IconHeart, Stack } from "../src/components/Layout";
 import { usePlayAudio } from "../src/utils";
 
-const actionsContainerCSS = css`
+const menuContainerCSS = css`
   position: relative;
   width: min-content;
   margin: 8px 0;
   --val: calc(100% + 2px); /*2px for focus shadow space */
 `;
 
-const actionsListCSS = css`
+const menuToggleCSS = css`
   position: absolute;
-  top: 0.4rem;
+  top: 0;
   left: 100%;
   clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
   transition: clip-path 150ms ease-in;
@@ -26,16 +26,26 @@ const actionsListCSS = css`
 `;
 
 function CaseCollapsingContent() {
-  const [isActionsOpen, setIsActionsOpen] = React.useState(false);
-  const toggleActionsOpen = () => setIsActionsOpen((status) => !status);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const toggleOpen = () => setIsOpen((status) => !status);
 
   return (
     <Case title="Collapsed content">
       <>
-        <nav css={actionsContainerCSS}>
-          <Button onClick={toggleActionsOpen}>Actions</Button>
-          <div css={actionsListCSS} data-open={isActionsOpen}>
-            <ActionsList />
+        <nav css={menuContainerCSS}>
+          <Button onClick={toggleOpen}>Menu</Button>
+          <div css={menuToggleCSS} data-open={isOpen}>
+            <ul css={menuListCSS}>
+              <li>
+                <a href="/home">Home</a>
+              </li>
+              <li>
+                <a href="/dashboard">Dashboard</a>
+              </li>
+              <li>
+                <a href="/settings">Settings</a>
+              </li>
+            </ul>
           </div>
         </nav>
 
@@ -123,30 +133,15 @@ function CaseToggleButtonText() {
 // *
 // *
 
-const actionsUlCSS = css`
+const menuListCSS = css`
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: 4px;
+  gap: 12px;
   display: flex;
   margin-left: 8px;
+  padding: 4px;
 `;
-
-export function ActionsList() {
-  return (
-    <ul css={actionsUlCSS}>
-      <li>
-        <button onClick={() => alert("Imagine Copy")}>Copy</button>
-      </li>
-      <li>
-        <button onClick={() => alert("Imagine Cut")}>Cut</button>
-      </li>
-      <li>
-        <button onClick={() => alert("Imagine Edit")}>Edit</button>
-      </li>
-    </ul>
-  );
-}
 
 export const cases = [
   {
@@ -177,7 +172,7 @@ It's super useful if you don't want to compromise CSS animations or SEO.
 
 ---
 
-Use the keyboard to navigate the Actions. You'll noticed the links inside the "Actions"
+Use the keyboard to navigate the Menu list. You'll noticed the links inside the "Menu"
 are still focusable even when visually hidden. 
 Make them only accessible when visible.
 
@@ -207,6 +202,10 @@ and you can even [animate it](https://css-tricks.com/exploring-what-the-details-
     </details>
 
 Just be mindful of [when to (not) use it](https://adrianroselli.com/2019/04/details-summary-are-not-insert-control-here.html).
+
+---
+
+Note: Please [do not use \`<menu>\` HTML element](https://github.com/w3c/aria-practices/issues/353) In case you were thinking about it, as it has poor browser support. 
 `,
   },
   {
