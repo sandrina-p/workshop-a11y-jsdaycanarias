@@ -23,28 +23,17 @@ const PanelContent = styled(Stack)`
   max-width: var(--theme-width);
 
   ${PanelEnd} & {
-    details {
-      cursor: pointer;
-    }
-
-    summary {
-      white-space: nowrap;
-    }
-
     ul {
       margin: 0;
     }
 
-    li {
+    li:has(a) {
       margin-bottom: 4px;
     }
 
-    a {
-      ${linkCSS}
-    }
-
-    p {
-      margin-bottom: 8px;
+    p:not(:first-of-type) {
+      /* to not have a margin before a ul */
+      margin-top: 8px;
     }
   }
 `;

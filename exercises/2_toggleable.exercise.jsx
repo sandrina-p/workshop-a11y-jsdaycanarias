@@ -1,43 +1,14 @@
 import React from "react";
 import { css } from "styled-components";
 
-import { Button, buttonToggleCSS, linkCSS } from "../src/components/Button";
+import { Button, buttonToggleCSS } from "../src/components/Button";
 import { Case, IconHeart, Stack } from "../src/components/Layout";
-
-function CaseToggleButton() {
-  const [isActiveA, setIsActiveA] = React.useState(false);
-  const [isActiveB, setIsActiveB] = React.useState(false);
-
-  return (
-    <Case title="Toggle button">
-      <Stack>
-        <button
-          onClick={() => setIsActiveA((status) => !status)}
-          data-active={isActiveA}
-          css={buttonToggleCSS}
-        >
-          Like
-          <IconHeart />
-        </button>
-
-        <button
-          onClick={() => setIsActiveB((status) => !status)}
-          data-active={isActiveB}
-          css={buttonToggleCSS}
-        >
-          <IconHeart />
-        </button>
-      </Stack>
-    </Case>
-  );
-}
-
-// ===============
+import { usePlayAudio } from "../src/utils";
 
 const actionsContainerCSS = css`
   position: relative;
   width: min-content;
-  margin-bottom: 8px;
+  margin: 8px 0;
   --val: calc(100% + 2px); /*2px for focus shadow space */
 `;
 
@@ -64,7 +35,7 @@ function CaseCollapsingContent() {
         <nav css={actionsContainerCSS}>
           <Button onClick={toggleActionsOpen}>Actions</Button>
           <div css={actionsListCSS} data-open={isActionsOpen}>
-            <ActionsItems />
+            <ActionsList />
           </div>
         </nav>
 
@@ -78,19 +49,58 @@ function CaseCollapsingContent() {
 
 // ===============
 
+function CaseToggleButton() {
+  const [isActiveA, setIsActiveA] = React.useState(false);
+  const [isActiveB, setIsActiveB] = React.useState(false);
+
+  return (
+    <Case title="Toggle button">
+      <Stack>
+        <button
+          onClick={() => setIsActiveA((status) => !status)}
+          data-active={isActiveA}
+          css={buttonToggleCSS}
+          // 💡 How does the SR know this button is _pressed_?
+        >
+          Like
+          <IconHeart />
+        </button>
+
+        <button
+          onClick={() => setIsActiveB((status) => !status)}
+          data-active={isActiveB}
+          css={buttonToggleCSS}
+          // 💡 How does the SR know the name/text of this button?
+        >
+          <IconHeart />
+        </button>
+      </Stack>
+    </Case>
+  );
+}
+
+// ===============
+
 function CaseToggleButtonText() {
-  const [isActive, setIsActive] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const { setAudio } = usePlayAudio();
+
+  function handleClick() {
+    const isPlayingNow = isPlaying;
+    setAudio(isPlayingNow);
+    setIsPlaying(!isPlayingNow);
+  }
 
   return (
     <Case title="Toggle state and text">
       <Stack>
         <button
-          onClick={() => setIsActive((status) => !status)}
-          data-active={isActive}
+          onClick={handleClick}
+          data-active={isPlaying}
           css={buttonToggleCSS}
-          aria-pressed={isActive}
+          aria-pressed={isPlaying}
         >
-          {isActive ? "Close" : "Open"}
+          {isPlaying ? "Pause" : "Play"}
         </button>
       </Stack>
     </Case>
@@ -122,7 +132,7 @@ const actionsUlCSS = css`
   margin-left: 8px;
 `;
 
-export function ActionsItems() {
+export function ActionsList() {
   return (
     <ul css={actionsUlCSS}>
       <li>
@@ -140,61 +150,30 @@ export function ActionsItems() {
 
 export const cases = [
   {
-    id: "CaseLinkVsButton",
-    Exercise: CaseToggleButton,
-    briefing: `
-Every content element needs at least 3 pieces of information:
-
-- **Role** - The type of element. E.g a button or a list.
-- **Name** - The text to identify the element.
-- **State** - Applicable to interactive elements. E.g. A button is pressed or a menu is opened.
-
-When one of these pieces can't be provided with native HTML elements, we need to complement
-it by using ARIA (Accessible Rich Internet Applications). **ARIA allows us to enhance the HTML semantics of an element.**
-
-There are [more than 45 \`aria-*\` attributes](https://www.w3.org/TR/wai-aria-1.1/#state_prop_def). We'll explore some of the most common.
-
----
-
-In this exercise, use the Screen Reader to interact with the buttons.
-You'll notice that some information is missing. Use ARIA to fix it.
-    `,
-    resources: [
-      {
-        name: "Rules of ARIA",
-        url: "https://w3c.github.io/using-aria/#notes2",
-      },
-      {
-        name: "Name, Role, Value",
-        url: "https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=412#name-role-value",
-      },
-    ],
-  },
-  {
     id: "CaseCollapsingContent",
     Exercise: CaseCollapsingContent,
     briefing: `
 Hiding content has two perspectives: visual and semantics.
-Often we visually hide content, but keep it "visible" for the Assistive Tecnologies, without realizing it.
+Often we hide content visually but forget about hiding it for Assistive Tecnologies.
 
-There are [many ways to hide content](https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/), the most common being:
+There are [many ways to hide content](https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/), for example:
 - \`display: none\` - Completely hidden: visually and sematically
 - \`opacity: 0\` - Visually hidden but accessible by keyboard
 
-For example, in the code below the button can still be focused:
+In the code below the button can still be focused:
 
     <div style="opacity: 0">
       <button>Get started</button>
     </div>
 
-Another way to hide elements without compromising CSS (animations) is
-to use the attribute \`inert\`. This tells the browser to "ignore"
+Another way to hide elements is by using the attribute \`inert\`. This tells the browser to "ignore"
 the entire element as if it didn't exist in the DOM.
 
     <div style="opacity: 0" inert="true">
       <button>Get started</button>
     </div>
 
+It's super useful if you don't want to compromise CSS animations or SEO.
 
 ---
 
@@ -215,25 +194,76 @@ Tip: Use "Accessibility Insights" Chrome extension to debug the Tab stops, at "A
         name: "The inert attribute",
         url: "https://developer.chrome.com/articles/inert/",
       },
+    ],
+    briefing_bonus: `
+You can toggle UI elements without Javascript by using the HTML element \`<details>\`.
+It looks exactly like this "Bonus A11Y" collapsed text that you are looking at,
+and you can even [animate it](https://css-tricks.com/exploring-what-the-details-and-summary-elements-can-do/).
+
+
+    <details>
+      <summary>Bonus A11Y</summary>
+      Depending on what piece of...
+    </details>
+
+Just be mindful of [when to (not) use it](https://adrianroselli.com/2019/04/details-summary-are-not-insert-control-here.html).
+`,
+  },
+  {
+    id: "CaseLinkVsButton",
+    Exercise: CaseToggleButton,
+    briefing: `
+Every content element needs at least 3 pieces of information:
+
+- **Role** - The type of element. E.g a button or a list.
+- **Name** - The text to identify the element.
+- **State** - Applicable to interactive elements. E.g. A button is pressed or a menu is opened.
+
+When one of these pieces can't be provided with native HTML elements, we need to complement
+it by using ARIA (Accessible Rich Internet Applications). **ARIA allows us to enhance the HTML semantics of an element.**
+
+There are [more than 45 \`aria-*\` attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes). We'll explore some of the most common.
+
+---
+
+In this exercise, use the Screen Reader to interact with the buttons.
+You'll notice that some information is missing. Use ARIA to fix it.
+    `,
+    resources: [
       {
-        extra: true,
-        name: "Animating Details",
-        url: "https://css-tricks.com/exploring-what-the-details-and-summary-elements-can-do/",
+        name: "Rules of ARIA",
+        url: "https://w3c.github.io/using-aria/#notes2",
       },
       {
-        extra: true,
-        name: "Details are not accordions or menus",
-        url: "https://adrianroselli.com/2019/04/details-summary-are-not-insert-control-here.html",
+        name: "Name, Role, Value",
+        url: "https://www.w3.org/WAI/WCAG22/quickref/?showtechniques=412#name-role-value",
+      },
+      {
+        name: "Toggle button vs Checkbox",
+        url: "https://uxmovement.com/buttons/when-to-use-a-switch-or-checkbox/",
       },
     ],
   },
   {
     id: "CaseToggleButtonText",
     Exercise: CaseToggleButtonText,
-    briefing: ``,
+    briefing: `
+Use the Screen Reader to interact with the Play/Pause button.
+Two things happen when you press it:
+- The button label changes
+- The aria-pressed values changes.
+
+Depending on the SR, the announcement is slightly different. Here's how Voice Over announces it:
+- _"unselected, Play, toggle button"_
+- _"selected, Pause, toggle button"_
+
+If the "Pause" is "selected", it means the sound is actually playing. Confusing right?
+
+How can we do better?
+`,
     resources: [
       {
-        name: "Playing with state",
+        name: "Playing with toggle buttons",
         url: "https://sarahmhigley.com/writing/playing-with-state/",
       },
     ],

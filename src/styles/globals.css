@@ -51,9 +51,10 @@ p {
   margin: 0;
 }
 
-a {
-  /* workaround for a > button on exercise1 */
-  text-decoration-color: var(--theme-primary);
+svg {
+  /* to override inline display: none */
+  /* Used so that pages with CSS disabled look better. */
+  display: block !important;
 }
 
 a {
@@ -111,6 +112,18 @@ ul {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+details {
+  cursor: pointer;
+}
+
+summary {
+  white-space: nowrap;
+}
+
+summary:hover {
+  color: var(--theme-primary);
 }
 
 details summary {
