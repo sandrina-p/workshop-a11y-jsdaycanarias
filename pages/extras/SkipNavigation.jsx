@@ -1,6 +1,5 @@
 import { css, keyframes } from "styled-components";
 
-import { linkCSS } from "../../src/components/Button";
 import { Case } from "../../src/components/Layout";
 import { Chapters } from "../../src/components/pageLayouts/Chapters.jsx";
 import { LayoutExercise } from "../../src/components/pageLayouts/LayoutExercise.jsx";
@@ -82,7 +81,7 @@ function CaseSkipSolution() {
     <Case title="Skip navigation">
       {/* 💡 1/2 Add the href pointing to the target element
        */}
-      <a href="#content">
+      <a href="#content" css={skipLinkCSS}>
         Skip navigation
         {/* 🍀 In real apps, this link is at the top of 
             the DOM (before "Home" and "Show solution") */}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { buttonCSS, linkCSS } from "../src/components/Button";
+import { buttonCSS } from "../src/components/Button";
 import { ButtonTop } from "../src/components/ButtonTop";
 import { Case, Stack, TextNote } from "../src/components/Layout";
 import { cssListCats, dataCats } from "../src/utils/cats";

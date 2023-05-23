@@ -1,6 +1,6 @@
 import React from "react";
 
-import { buttonCSS, linkCSS } from "../src/components/Button";
+import { buttonCSS } from "../src/components/Button";
 import { Case, TextError } from "../src/components/Layout";
 import { Tooltip } from "../src/components/Tooltip";
 import { fetchProducts } from "../src/utils";

@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import React, { useRef } from "react";
 import { css } from "styled-components";
 
-import { buttonCSS, buttonOutlineCSS, linkCSS } from "../src/components/Button";
+import { buttonCSS, buttonOutlineCSS } from "../src/components/Button";
 import { Case, StackY, TextError, fadeIn } from "../src/components/Layout";
 
 function CaseCSSOnly() {
