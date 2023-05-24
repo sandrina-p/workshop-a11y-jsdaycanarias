@@ -170,10 +170,10 @@ function CaseToggleButtons() {
             onClick={() => setIsActiveB((status) => !status)}
             css={buttonToggleCSS}
             aria-pressed={isActiveB}
-            // aria-label="Like" // 💡 Approach B.
+            // aria-label="Like" // 💡 Approach A.
           >
             <IconHeart />
-            {/* 💡 Approach A (my favorite): Use .sr-only class.
+            {/* 💡 Approach B (my favorite): Use .sr-only class.
                   - Every translator tools can catch it.
                   - Pages without CSS will show this text.
             */}
@@ -274,7 +274,6 @@ Using CSS:
 When the menu is hidden set \`visibility:hidden\`, and when it's visible, set \`visibility:visible\`.   
 To preserve the "slide-out" CSS transition when the menu closes, we need to apply a \`transition\` delay to the \`visibility\` property,
 so that it changes only after the slide with \`clip-path\` ends.
-
     `,
   },
   {

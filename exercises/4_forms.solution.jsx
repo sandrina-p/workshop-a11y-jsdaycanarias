@@ -40,14 +40,15 @@ function CaseInputInformation() {
     >
       <form>
         <div css={fieldCSS.field}>
+          {/* 💡 1/3 Always connect the label to the input */}
           <label css={fieldCSS.label} htmlFor="emailSolution">
-            Your e-mail{" "}
+            Your e-mail {/* 💡 2/3 Hide this visual indicator from AT. */}
             <span aria-hidden="true" css={fieldCSS.star}>
               *
             </span>
           </label>
           <input
-            // 💡 Add the necessary field state info
+            // 💡 2/3 Add the necessary field state info
             type="email" // keyboard layout
             id="emailSolution" // label connector
             aria-required="true" // semantic required
@@ -61,7 +62,7 @@ function CaseInputInformation() {
             {formErrors.email && (
               <span
                 id="emailErrorSolution"
-                // 💡 We can use aria-live if it's only on blur
+                // 💡 2/3 We can use aria-live if it's only on blur
                 // Me mindful to not be annoying with too many announcements
                 aria-live="assertive"
                 css={fieldCSS.error}
@@ -76,7 +77,7 @@ function CaseInputInformation() {
         </div>
 
         {/* Group checkbox
-        💡 Checkboxes/radios must be wrapped
+        💡 3/3 Checkboxes/radios must be wrapped
         in a <fieldset> and use <legend> to mark their common label
         */}
         <fieldset css={fieldCSS.field}>

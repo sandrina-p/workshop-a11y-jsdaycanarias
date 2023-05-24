@@ -6,14 +6,7 @@ import { css, keyframes } from "styled-components";
 
 import { Button, buttonCSS } from "../src/components/Button";
 import { ButtonTop } from "../src/components/ButtonTop";
-import {
-  Case,
-  IconCart,
-  SROnly,
-  Stack,
-  TextNote,
-  srOnlyCSS,
-} from "../src/components/Layout";
+import { Case, IconCart, Stack, TextNote } from "../src/components/Layout";
 import { cssListCats, dataCats } from "../src/utils/cats";
 
 export function LinkVsButton() {
@@ -23,32 +16,31 @@ export function LinkVsButton() {
     <>
       <Case title="What's a link?">
         <Stack gap="24px" flexWrap="wrap">
-          {/* 💡 Never do this, unless you are really really sure of your edge-case. */}
+          {/* 💡❌ Never do this, unless you are really sure about your edge-case. */}
           <div onClick={() => router.push(`/checkout`)} css={buttonCSS}>
             Checkout div
           </div>
 
-          {/* 💡 Dealing with route? Use a (or Link) instead! */}
+          {/* 💡❌ Dealing with route? Use an <a> (or <Link>) instead */}
           <button css={buttonCSS} onClick={() => router.push(`/checkout`)}>
             Checkout btn
           </button>
 
-          {/* 💡 Simple and clear. */}
+          {/* 💡 Simple and clear. The user can bookmark it, open it in a new tab, etc */}
           <a href="/checkout" css={buttonCSS}>
             Checkout anchor
           </a>
 
-          {/* 💡 Use Link to preserver the SPA behaviour (i.e. avoid full-page reload on click). */}
+          {/* 💡 Use Link to preserve the SPA behaviour (i.e. avoid full-page reload on click). */}
           <Link href="/checkout">Checkout link</Link>
 
-          {/* 💡 Be aware of this Link > Button because the output might 
-               me a nested button inside a link which is invalid HTML */}
+          {/* 💡❌ Be aware of Link > Button because the output might 
+               me a button inside a link which is invalid HTML */}
           <Link href="/checkout">
             <Button>Checkout link > btn</Button>
           </Link>
 
-          {/* 💡 Similarly the same invalid HTML also
-                happens with a link inside a button */}
+          {/* 💡❌ Similarly, a link inside a button is also invalid HTML. */}
           <Button>
             <Link href="/checkout">Checkout btn > link</Link>
           </Button>
@@ -169,17 +161,16 @@ export function BackToTop() {
   const refTitle = useRef();
 
   function handleToTop() {
-    console.log(refTitle.current);
     const titleDistanceFromTop = refTitle.current.getBoundingClientRect().top;
+
     window.scrollTo({
       top: window.scrollY + titleDistanceFromTop - 16,
       behavior: "smooth",
     });
 
-    // 💡 Also focus the closest element (the h1)
-    // and add a tabindex="-1" to it
+    // 💡 Move the focus to the title
     refTitle.current.focus({
-      // 💡 Let me scroll be done by window.scrollTo
+      // 💡 Do this to not clash with window.scrollTo() above
       preventScroll: true,
     });
   }
@@ -199,14 +190,14 @@ export function BackToTop() {
           <ul css={cssListCats.ul}>
             {dataCats.map(({ url, name }, i) => (
               <li key={i}>
-                {/* 💡 Alt is redundat because the name is right after. So, it can be empty alt="" */}
+                {/* 🍀 Bonus: Alt is redundat because the name is right after. So, it can be empty alt="" */}
                 <Image src={url} alt="" />
                 <div css={cssListCats.info}>
                   <span>{name}</span>
                   <a href={`#cat-link/${i}`}>
                     View
-                    {/* 💡 Make the link unique for SRs, using sr-only. */}
-                    <SROnly>{name}</SROnly>
+                    {/* 🍀 Bonus: Make the link unique for SRs, using sr-only. */}
+                    <span className="sr-only">{name}</span>
                   </a>
                 </div>
               </li>
@@ -289,11 +280,11 @@ unless the URL no longer contains that selector. To overcome this, you'd need to
     explanation: `
 Whenever you create a shortcut, remember to also update the keyboard position (focus).
 
-To do so, you need to turn the target (the title) into an focusable element 
-using \`tabindex="-1"\` attribute, and then move the focus to it using the [\`.focus()\` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
-
-The \`-1\` tells that the element is programatically focusable. 
+In the tabindex, the \`-1\` tells that the element is programatically focusable. 
 Pressing \`Tab\` doesn't focus it, just by using JavaScript.
+
+In the \`focus()\`, remember to pass the option \`preventScroll: true\`,
+so it doesn't conflict with the scroll from \`window.scrollTo\`.
 
 Although tricky, know that JS allows us to have almost full control of the focus management in a page.
 `,

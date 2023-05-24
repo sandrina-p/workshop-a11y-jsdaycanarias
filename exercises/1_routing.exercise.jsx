@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useRef } from "react";
 import { css } from "styled-components";
 
 import { Button, buttonCSS } from "../src/components/Button";
@@ -21,8 +23,8 @@ function CaseLinkVsButton() {
     <>
       <Case title="What's a link?">
         <Stack gap="24px">
-          {/* 💡 Let's analyze together the caveats of
-          each navigation strategy. */}
+          {/* 💡 Let's analyze together the caveats
+              of each navigation strategy. */}
           <div onClick={() => router.push(`/checkout`)} css={buttonCSS}>
             Checkout div
           </div>
@@ -58,12 +60,12 @@ function CaseLinkVsButton() {
 
 const skipCSS = css`
   &:not(:focus) {
-    // 💡 2/4 Uncomment to apply the .sr-only styles
+    // 💡 3/4 Uncomment to apply the .sr-only styles
     /* ${srOnlyStyles}; */
   }
 
   &:focus {
-    // 💡 3/4 Add styles when it's focused:
+    // 💡 4/4 Add styles when it's focused:
   }
 `;
 
@@ -116,15 +118,22 @@ function CaseSkip() {
 }
 
 function CaseBackToTop() {
+  const refTitle = useRef();
+
   function handleToTop() {
+    const titleDistanceFromTop = refTitle.current.getBoundingClientRect().top;
+
     window.scrollTo({
-      top: 0,
+      top: window.scrollY + titleDistanceFromTop - 16,
       behavior: "smooth",
     });
+
+    // 💡 1/2 Move the focus to the title here.
   }
   return (
     <>
       <Case title={`"Back to top" pattern`}>
+        {/* 💡 2/2 Turn the title into an interactive element. */}
         <h3 css={cssListCats.title}>Cats</h3>
 
         <Stack>
@@ -263,11 +272,14 @@ Go give it a try!
     briefing: `
 At the end of the list there's a button to go back to the top.
 
-It works well with a mouse, but not with the keyboard:
+It works well when you click it with a mouse, but not with the keyboard:
 After you press the button with \`Enter\` and then hit \`Tab\`, the focus 
 goes to "cat facts" link instead of starting from the top of the list. 
 
-How do we fix it?
+To fix it, you need to move the focus to the title with [\`.focus()\` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus),
+and then make the title an interactive element, by adding \`tabindex="-1"\` attribute.
+
+To fix it, we'll need to use [\`.focus()\`]() How do we fix it?
     `,
     resources: [
       {

@@ -19,7 +19,7 @@ function Exercise() {
   async function handleSubmit(e) {
     e.preventDefault(); // avoid native form submit (page refresh)
 
-    // 💡 Bonus part: prevent submit when aria-disabled="true"
+    // 🍀 Bonus[2/2]: Prevent submit when aria-disabled="true"
     if (!isFormSubmitActive) return false;
 
     setIsLoadingProducts(true);
@@ -39,7 +39,7 @@ function Exercise() {
 
   return (
     <Case title="Loading states">
-      {/* 🍀 All is good in this form. Jump to the results area */}
+      {/* 💡 All is good in this form. Jump to the results area */}
       <form noValidate onSubmit={handleSubmit} css={formCss.form}>
         <div>
           <FieldPages
@@ -54,6 +54,7 @@ function Exercise() {
             <button
               type="submit"
               css={buttonCSS}
+              // 🍀 Bonus[1/2] Accessible disabled button
               aria-disabled={!isFormSubmitActive}
             >
               Get products
@@ -68,10 +69,10 @@ function Exercise() {
         {/* Empty State */}
         {products.length === 0 && isProductsOkay && <p>No products yet.</p>}
 
-        {/* Loading state */}
+        {/* 💡 Loading state */}
         {isLoadingProducts && <p aria-live="assertive">Loading products...</p>}
 
-        {/* Error state */}
+        {/* 💡 Error state */}
         {productsError && (
           <TextError aria-live="assertive">{productsError}</TextError>
         )}

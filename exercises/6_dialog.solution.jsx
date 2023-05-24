@@ -25,12 +25,9 @@ export const solutions = [
     Solution: CaseEmpty,
   },
   {
-    Solution: CaseEmpty,
+    Solution: false,
   },
   {
-    Solution: CaseEmpty,
-  },
-  {
-    Solution: CaseEmpty,
+    Solution: false,
   },
 ];

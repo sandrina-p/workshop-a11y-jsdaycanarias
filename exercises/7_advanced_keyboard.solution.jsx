@@ -39,9 +39,9 @@ function RovingContainer({ children, maxIndex }) {
   }
 
   function handleKeyDown(e) {
-    const arrowType = arrowsCode[e.keyCode]; // LEFT || UP || RIGHT || DOWN
+    const arrowName = arrowsCode[e.keyCode]; // LEFT || UP || RIGHT || DOWN
 
-    if (!arrowType) {
+    if (!arrowName) {
       // Do nothing if the user didn't click an arrow key
       return;
     }
@@ -49,7 +49,7 @@ function RovingContainer({ children, maxIndex }) {
     let newIx;
 
     // 💡 1/5 When the arrow is "UP", go to the previous activeIx
-    if (arrowType === "UP" || arrowType === "LEFT") {
+    if (arrowName === "UP" || arrowName === "LEFT") {
       if (activeIx === 0) {
         return; // Or you could set the last index (loop)
       }
@@ -57,7 +57,7 @@ function RovingContainer({ children, maxIndex }) {
     }
 
     // 💡 2/5 When the arrow is "DOWN", go to the next activeIx
-    if (arrowType === "DOWN" || arrowType === "RIGHT") {
+    if (arrowName === "DOWN" || arrowName === "RIGHT") {
       if (activeIx === maxIndex) {
         return; // Or you could set the first index (loop)
       }
@@ -119,7 +119,7 @@ function CaseRoving() {
         This is a <a href="#a">dummy link</a> just for example.
       </p>
 
-      <RovingContainer maxindex={people.length - 1}>
+      <RovingContainer maxIndex={people.length - 1}>
         <table css={stylesTable}>
           <thead>
             <tr>
@@ -200,12 +200,14 @@ Different solutions are possible for this exercise.
 This one is using React Context to store the state of the current active table row,
 and manage the event listeners to the key down.
 
-Read the code comments to better understand the code flow.
+Read the code comments to understand better the code flow.
 
 ---
 
 Implementing a Roving System with a large browser support has a few caveats. I recommend you to take a look at
-other A11Y libraries source code to learn from them, such as [reach/tabs](https://github.com/reach/reach-ui/blob/43f450db7bcb25a743121fe31355f2294065a049/packages/descendants/src/reach-descendants.tsx#L197) or [radix-ui/roving-focus](https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus).
+other A11Y libraries source code to learn from them,
+such as [reach/tabs](https://github.com/reach/reach-ui/blob/43f450db7bcb25a743121fe31355f2294065a049/packages/descendants/src/reach-descendants.tsx#L197) 
+and [radix-ui/roving-focus](https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus).
 `,
   },
   {},

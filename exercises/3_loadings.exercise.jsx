@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React from "react";
 import { css } from "styled-components";
 
@@ -7,7 +8,7 @@ import { Tooltip } from "../src/components/Tooltip";
 import { fetchProducts } from "../src/utils";
 
 function Exercise() {
-  const [page, setPage] = React.useState(null);
+  const [page, setPage] = React.useState("");
   const [products, setProcuts] = React.useState([]);
   const [isLoadingProducts, setIsLoadingProducts] = React.useState(false);
   const [productsError, setProductsError] = React.useState(null);
@@ -36,7 +37,7 @@ function Exercise() {
 
   return (
     <Case title="Loading states">
-      {/* 🍀 All is good in this form. Jump to the results area */}
+      {/* 💡 All is good in this form. Jump to the results area */}
       <form noValidate onSubmit={handleSubmit} css={formCss.form}>
         <div>
           <FieldPages
@@ -60,10 +61,10 @@ function Exercise() {
         />
       </form>
 
-      {/* 💡 All changes will be done inside this div 
+      {/* 💡 All changes need to be done inside this div 
         Below it's the multiple dynamic states.
         Create the necessary live regions to ensure the
-        dynamic content is announced by assistive technologies. */}
+        dynamic content is announced by AT (Assistive technologies). */}
       <div css={formCss.resultsArea}>
         {/* Empty State */}
         {products.length === 0 && isProductsOkay && <p>No products yet.</p>}
@@ -137,8 +138,7 @@ results accessible using Live Regions.
       },
     ],
     briefing_bonus: `
-Do you see that disabled button? 
-
+Do you see that disabled button?   
 When hovering it, a tooltip is shown.
 Now, try to do the same using the keyboard...
 

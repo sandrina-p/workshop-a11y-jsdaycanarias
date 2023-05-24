@@ -34,6 +34,7 @@ function CaseCollapsingContent() {
       <>
         <nav css={menuContainerCSS}>
           <Button onClick={toggleOpen}>Menu</Button>
+          {/* 💡 1/1 Truly hide this element when closed. */}
           <div css={menuToggleCSS} data-open={isOpen}>
             <ul css={menuListCSS}>
               <li>
@@ -60,28 +61,18 @@ function CaseCollapsingContent() {
 // ===============
 
 function CaseToggleButton() {
-  const [isActiveA, setIsActiveA] = React.useState(false);
-  const [isActiveB, setIsActiveB] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(false);
 
   return (
     <Case title="Toggle button">
       <Stack>
         <button
-          onClick={() => setIsActiveA((status) => !status)}
-          data-active={isActiveA}
+          onClick={() => setIsActive((status) => !status)}
+          data-active={isActive}
           css={buttonToggleCSS}
-          // 💡 How does the SR know this button is _pressed_?
+          // 💡 1/1 How do we tell Assitive Technologies that this button is active?
         >
           Like
-          <IconHeart />
-        </button>
-
-        <button
-          onClick={() => setIsActiveB((status) => !status)}
-          data-active={isActiveB}
-          css={buttonToggleCSS}
-          // 💡 How does the SR know the name/text of this button?
-        >
           <IconHeart />
         </button>
       </Stack>
@@ -110,6 +101,7 @@ function CaseToggleButtonText() {
           css={buttonToggleCSS}
           aria-pressed={isPlaying}
         >
+          {/* 💡 1/1 How would we solve this? */}
           {isPlaying ? "Pause" : "Play"}
         </button>
       </Stack>
@@ -149,7 +141,7 @@ export const cases = [
     Exercise: CaseCollapsingContent,
     briefing: `
 Hiding content has two perspectives: visual and semantics.
-Often we hide content visually but forget about hiding it for Assistive Tecnologies.
+Often we hide content visually but forget about hiding it for AT (Assistive Tecnologies).
 
 There are [many ways to hide content](https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/), for example:
 - \`display: none\` - Completely hidden: visually and sematically
@@ -209,7 +201,7 @@ Note: Please [do not use \`<menu>\` HTML element](https://github.com/w3c/aria-pr
 `,
   },
   {
-    id: "CaseLinkVsButton",
+    id: "CaseToggleButton",
     Exercise: CaseToggleButton,
     briefing: `
 Every content element needs at least 3 pieces of information:
@@ -256,7 +248,8 @@ Depending on the SR, the announcement is slightly different. Here's how Voice Ov
 - _"unselected, Play, toggle button"_
 - _"selected, Pause, toggle button"_
 
-If the "Pause" is "selected", it means the sound is actually playing. Confusing right?
+"selected, Pause" hum... If the "Pause" is "selected" then it means... the sound is actually playing (!?).
+Confusing right?
 
 How can we do better?
 `,

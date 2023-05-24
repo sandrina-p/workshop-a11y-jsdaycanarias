@@ -24,6 +24,10 @@ export const buttonCSS = css`
   font-weight: 600;
   line-height: 1;
 
+  &:hover {
+    color: var(--theme-text_invert); /* to work with a */
+  }
+
   &:hover:not(:disabled, [aria-disabled="true"]) {
     opacity: 0.8;
   }

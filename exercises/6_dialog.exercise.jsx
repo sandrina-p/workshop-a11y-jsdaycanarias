@@ -8,8 +8,8 @@ import { Case, StackY, TextError, fadeIn } from "../src/components/Layout";
 function CaseCSSOnly() {
   return (
     <Case title="CSS-only Dialog">
-      {/* This anchor link changes the URL. Then with
-      CSS &:target {} you make the modal visible. */}
+      {/* 💡 This anchor link changes the URL. Then with
+      CSS &:target you make the modal visible. */}
       <a href="#brokenDialog" css={buttonCSS}>
         Open CSS-only Dialog
       </a>
@@ -36,11 +36,7 @@ function CaseDialogElement() {
 
   return (
     <Case title="Native: The <dialog> Element">
-      <button
-        // Open the modal
-        onClick={() => refDialog.current.showModal()}
-        css={buttonCSS}
-      >
+      <button onClick={() => refDialog.current.showModal()} css={buttonCSS}>
         Open Native Dialog
       </button>
 
@@ -53,7 +49,7 @@ function CaseDialogElement() {
           <button
             type="button"
             // 💡 <form> is required for close() to work
-            // bug: In Chrome, DevTools can't be open, otherwise the site crashes. Don't know why
+            // bug: In Chrome, DevTools must be closed otherwise the site crashes. I don't know why
             onClick={() => refDialog.current.close("close")}
           >
             Close
@@ -267,10 +263,10 @@ for when you need to build a site without JS.`,
     id: "dialogEl",
     Exercise: CaseDialogElement,
     briefing: `
-The [\`<dialog>\`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement#examples) has a lot of benefits such as:
-- The Keyboard shortcuts work (eg Escape to exist).
-- The focus is trapped inside the modal.
+The [\`<dialog>\`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement#examples) comes with A11Y built-in, such as:
 - The semantics are correct by default (no need for ARIA attributes).
+- The keyboard shortcuts work (eg Escape to exist).
+- The focus is moved and trapped inside the modal.
 - Supported by all [major browsers](https://caniuse.com/dialog).
 - But is still limited to handle complex scenario.
     `,
@@ -279,18 +275,22 @@ The [\`<dialog>\`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogEl
         name: "Use the dialog element (reasonably)",
         url: "https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html",
       },
+      {
+        name: "Thread about focus trap",
+        url: "https://github.com/whatwg/html/issues/8339",
+      },
     ],
   },
   {
     id: "package",
     Exercise: CasePackages,
     briefing: `
-[\`radix-ui\`](https://www.radix-ui.com/) is my favorite solution for accessible components in React. 
-Here's another great libraries:
+[\`radix-ui\`](https://www.radix-ui.com/) is my favorite React component library with accessible in mind. 
+Another great libraries:
 
 - [\`react-a11y-dialog\`](https://github.com/KittyGiraudel/react-a11y-dialog): Minimal standalone package
 - [\`Reach\`](https://reach.tech/dialog): A Components library focused on A11Y.
-
+- [\`Vue A11y\`](https://vue-a11y.com/): A Vue community to improve a11y.
 ---
 
 Before you use a package from the community, 

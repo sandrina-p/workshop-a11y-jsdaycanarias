@@ -9,6 +9,7 @@ function App({ Component, pageProps }) {
   return getLayout(<Component {...pageProps} />);
 }
 
+// 💡 Activate @axe-core/react
 if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
   import("react-dom").then((ReactDOM) => {
     import("@axe-core/react").then((axe) => {

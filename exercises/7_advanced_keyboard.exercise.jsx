@@ -22,9 +22,9 @@ the onKeyDown() listener to detect the up/down key press.
 is wrapped in <RovingItem index={number}> where "index" is the
 respective position in the list of elements to be roved.
 
-🎯 Goal: [1] and [2] are done and connected to the Table.
+[1] and [2] are done and connected to the table.
 
-💡 It's missing to connect the index to the keyboard listener.
+💡 Goal: It's missing to connect the index to the keyboard listener.
 Follow the 💡 emoji in 5 places to solve this, from "1/5" to "5/5"
 */
 
@@ -47,14 +47,19 @@ function RovingContainer({
   }
 
   function handleKeyDown(e) {
-    const arrowType = arrowsCode[e.keyCode]; // LEFT || UP || RIGHT || DOWN
+    const arrowName = arrowsCode[e.keyCode]; // LEFT || UP || RIGHT || DOWN
 
-    console.log("::: key down", { arrowType, activeIx, maxIndex });
+    console.log("::: handleKeyDown", {
+      arrowName,
+      activeIx,
+      maxIndex,
+      setActiveIx,
+    });
 
     if (e.keyCode === "83") {
     }
 
-    if (!arrowType) {
+    if (!arrowName) {
       // Do nothing if the user didn't click an arrow key
       return;
     }
@@ -117,17 +122,14 @@ function CaseRovingInitialBoilerplate() {
         This is a <a href="#a">dummy link</a> just for example.
       </p>
 
-      <RovingContainer maxindex={people.length - 1}>
+      <RovingContainer maxIndex={people.length - 1}>
         <table css={stylesTable}>
           <thead>
             <tr>
               <th>Name</th>
               <th>Job Role</th>
               <th>City</th>
-              <th>
-                {/* 🍀 Bonus here */}
-                <span className="sr-only">Select</span>
-              </th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -154,7 +156,6 @@ function CaseRovingInitialBoilerplate() {
                         type="checkbox"
                         name="people"
                         value={p.userId}
-                        // 🍀 Bonus here
                         aria-label="Select person"
                       />
                     </RovingItem>
@@ -175,9 +176,9 @@ function CaseRovingInitialBoilerplate() {
 
 function CaseRovingDoNotCodeHere() {
   // ❌ DO NOT solve the exercise here
-  // ❌ Use the one above down to the next component.
+  // ❌ Use the one above called CaseRovingInitialBoilerplate.
   return (
-    <Case title="Roving technique (clean without boilerplate)">
+    <Case title="Roving technique (original without boilerplate)">
       <h3>Create "Checkout" Team</h3>
       <p>
         This is a <a href="#a">dummy link</a> just for example.

@@ -4,8 +4,8 @@ import { buttonCSS, buttonOutlineCSS } from "../src/components/Button";
 import { Case, StackXCenter, rotateCSS } from "../src/components/Layout";
 import {
   fakeWaitTime,
-  shuffleDaysAnimation, // -
-  // 💡 Import the hook predefined
+  shuffleDaysAnimation,
+  /* 💡 1/4 Import the hook predefined */
   // usePrefersReducedMotion,
 } from "../src/utils";
 
@@ -13,7 +13,7 @@ function CaseAnimation() {
   const [day, setDay] = React.useState("");
   const [isLoading, setIsLoading] = React.useState("");
 
-  // 💡 TODO get the real motion preference
+  // 💡 2/4 Get the real motion preference
   const reducedMotion = false;
 
   async function getLuckyDay() {
@@ -24,7 +24,7 @@ function CaseAnimation() {
 
     const stopShuffle = shuffleDaysAnimation(setDay);
 
-    // 💡 TODO replace this animation with a simpler alternative.
+    // 💡 3/4 Replace this animation with a simpler alternative.
     // For example, just show "Loading..." in the page.
     await fakeWaitTime(1500);
     stopShuffle();
@@ -49,7 +49,7 @@ function CaseAnimation() {
       </StackXCenter>
 
       {isLoading && (
-        // 💡 Provide an alternative when motion is reduced.
+        // 💡 4/4 Provide an alternative loading when motion is reduced.
         <p>{day}</p>
       )}
 
@@ -60,8 +60,8 @@ function CaseAnimation() {
         </p>
       )}
 
-      {/* Extra: A tiny square just to know if the 
-      reduced-motion is neabled or not */}
+      {/* A tiny square just to know if the 
+      reduced-motion is enabled or not */}
       <div css={rotateCSS}></div>
     </Case>
   );
@@ -100,7 +100,9 @@ Users might find animations distracting or uncomfortable. Some can't even see th
 
 ---
 
-The CSS media query [\`preferes-reduced-motion\`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) allows us to respect the user's motion preferences. We can use it in JS too with [\`window.matchMedia()\`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia). 
+In this exercise, users might prefer to not see the lucky day animation.
+We can turn animations off with CSS media query [\`preferes-reduced-motion\`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+We can use it in JS too with [\`window.matchMedia()\`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia), respecting the user's motion preferences. 
 
 Let's go!
 

@@ -5,6 +5,7 @@ import { Case, StackXCenter, rotateCSS } from "../src/components/Layout";
 import {
   fakeWaitTime,
   shuffleDaysAnimation,
+  /* 💡 1/4 Import the hook predefined */
   usePrefersReducedMotion,
 } from "../src/utils";
 
@@ -12,7 +13,7 @@ export function CaseAnimation() {
   const [day, setDay] = React.useState("");
   const [isLoading, setIsLoading] = React.useState("");
 
-  // 💡 Use CSS media queries in JavaScript to customize animations.
+  // 💡 2/4 Get the real motion preference
   const reducedMotion = usePrefersReducedMotion();
 
   async function getLuckyDay() {
@@ -22,7 +23,7 @@ export function CaseAnimation() {
     setDay(""); // reset the day
 
     if (reducedMotion) {
-      // 💡 Provide a simpler transition instead
+      // 💡 3/4 Replace this animation with a simpler alternative.
       // Removed the shuffle in favor of a simple "Loading..."
       await fakeWaitTime(1500);
     } else {
@@ -50,22 +51,20 @@ export function CaseAnimation() {
         <p>Motion: {reducedMotion ? "reduced" : "no-preference"}</p>
       </StackXCenter>
 
-      {/* 💡 Accessible Loading - Always set an invisible loading for SRs... */}
+      {/* 🍀 Accessible Loading - Always set an invisible loading for SRs... */}
       {isLoading && (
         <p aria-live="assertive" className="sr-only">
           Loading...
         </p>
       )}
 
-      {/*💡 Animation - based on the user preferences  */}
       {isLoading &&
         (reducedMotion ? (
-          // Show a simple visual Loading text
+          // 💡 4/4 Provide an alternative loading when motion is reduced.
           <p>Loading...</p>
         ) : (
-          // Your fancy animation
-          // Remember to hide it from SR otherwise
-          // it will announce an random day if the user
+          // 🍀 Remember to hide animations with text from SR
+          // otherwise it will announce an random day if the user
           // reaches this element during the loading time.
           <div aria-hidden="true">{day}</div>
         ))}
@@ -73,12 +72,12 @@ export function CaseAnimation() {
       {/* 💡 Final result - Announce it with live region */}
       {!isLoading && !!day && (
         <p aria-live="assertive">
-          It is {day}! <FireIcon />
+          {`Its ${day}!`} <FireIcon />
         </p>
       )}
 
-      {/* Extra: A tiny square just to know if the 
-      reduced-motion is neabled or not */}
+      {/* A tiny square just to know if the 
+      reduced-motion is enabled or not */}
       <div css={rotateCSS}></div>
     </Case>
   );

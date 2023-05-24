@@ -37,15 +37,18 @@ function CaseInputInformation() {
     <Case
       title="Input information"
       // 💡 A11Y myth: Blind people are not the only ones who use SRs
-      // style={{ filter: "blur(4px)" }}
+      style={{ filter: "blur(4px)" }}
     >
       <form>
         <div css={fieldCSS.field}>
-          <label css={fieldCSS.label} htmlFor="emailSolution">
+          <label
+            css={fieldCSS.label}
+            // 💡 1/3 Always connect the label to the input
+          >
             Your e-mail <span css={fieldCSS.star}>*</span>
           </label>
           <input
-            // 💡 Add the needed field info
+            // 💡 2/2 Add the needed field info
             // - the type for keyboard layout (type)
             // - if it is required or not (aria-required)
             // - if it is valid or not (aria-invalid)
@@ -65,7 +68,7 @@ function CaseInputInformation() {
         </div>
 
         {/* Group checkbox
-        💡 Checkboxes/radios must be wrapped
+        💡 3/3 Checkboxes/radios must be wrapped
         in a <fieldset> and use <legend> to mark their common label
         */}
         <div css={fieldCSS.field}>
