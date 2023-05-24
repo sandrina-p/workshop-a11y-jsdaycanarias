@@ -59,26 +59,25 @@ export const customCheckboxCSS = css`
   & :last-child::before {
     content: "";
     display: inline-block;
+    position: relative;
+    top: 2px;
     width: 14px;
     height: 14px;
     margin-right: 5px;
     border-radius: 50%;
-    border: 1px solid #6f6f6f;
+    border: 2px solid #6f6f6f;
     transform: translateY(2px);
     transition: box-shadow 150ms, background-color 150ms;
   }
 
   & :last-child::after {
-    font-family: sans-serif;
     content: "";
-    line-height: 1;
-    font-size: 14px;
     position: absolute;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    top: 12px;
-    left: 8px;
+    top: 13px;
+    left: 9px;
     background-color: #fff;
     transform: translate(-50%, -50%);
   }

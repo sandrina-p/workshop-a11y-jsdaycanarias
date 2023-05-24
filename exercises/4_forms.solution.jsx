@@ -3,13 +3,14 @@ import { css } from "styled-components";
 
 import { buttonOutlineCSS } from "../src/components/Button";
 import { customCheckboxCSS, fieldCSS } from "../src/components/Form";
-import { Case, Stack } from "../src/components/Layout";
+import { Case, Stack, srOnlyStyles } from "../src/components/Layout";
 import { mailPattern } from "../src/utils";
 
 const fieldRadio = css`
   input {
     /* 💡 We shouldn't use display:none, right? */
-    display: none;
+    /* display: none; */
+    ${srOnlyStyles}
   }
 
   ${customCheckboxCSS}

@@ -76,7 +76,7 @@ export function LayoutExercise({ children, title }) {
           as="header"
           justifyContent="space-between"
           alignItems="center"
-          mb="12px"
+          mb="16px"
         >
           <Link href="/" css={linkCSS}>
             Home
