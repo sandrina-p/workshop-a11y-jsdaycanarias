@@ -234,6 +234,24 @@ You'll notice that some information is missing. Use ARIA to fix it.
         url: "https://uxmovement.com/buttons/when-to-use-a-switch-or-checkbox/",
       },
     ],
+    briefing_bonus: `
+Automated A11Y tools only catch [up to 20-30% of A11Y issues](https://accessibility.blog.gov.uk/2017/02/24/what-we-found-when-we-tested-tools-on-the-worlds-least-accessible-webpage).
+Nevertheless, you may want to install [\`axe\`](https://github.com/dequelabs/axe-core/blob/develop/doc/projects.md) in your own project:
+- eg: [\`axe-core/react\`](https://github.com/dequelabs/axe-core-npm/blob/develop/packages/react/README.md), [\`jest-axe\`](https://github.com/nickcolley/jest-axe), [\`cypress-axe\`](https://www.npmjs.com/package/cypress-axe).
+
+The more interactive your webpage is, the fewer bugs it catches. 
+For example, it wouldn't have caught this incomplete Like button.
+
+You'll need to write unit tests. For example, in [\`Testing-library\`](https://testing-library.com/docs/dom-testing-library/api-accessibility/) you'd write:
+    
+    const btn = screen.getByRole('button', {name: 'Like'})
+    fireEvent.click(btn);
+    expect(btn).toHaveAttribute('aria-pressed', 'true')
+
+Check some real examples:
+- [Testing \`@reach-ui/menu-button\`](https://github.com/reach/reach-ui/blob/main/packages/menu-button/__tests__/menu-button.test.tsx) — ([demo](https://reach.tech/menu-button))
+- [Testing focus behavior](https://github.com/radix-ui/primitives/blob/c7d458ce05ea88a5ae31721e12f3cd64b59a932f/packages/react/accordion/src/Accordion.test.tsx#L30) - ([demo](https://www.radix-ui.com/docs/primitives/components/accordion))
+    `,
   },
   {
     id: "CaseToggleButtonText",
