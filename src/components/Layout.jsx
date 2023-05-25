@@ -450,14 +450,15 @@ export const Banner = styled.article`
 */
 
 export const srOnlyStyles = css`
-  position: absolute;
-  width: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   height: 1px;
-  padding: 0;
-  margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
 `;
 
 export const SROnly = styled.span`
