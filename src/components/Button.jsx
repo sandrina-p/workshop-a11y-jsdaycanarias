@@ -68,6 +68,10 @@ export const buttonOutlineCSS = css`
   color: var(--theme-text_0);
   border-color: currentColor;
   background-color: transparent;
+
+  &:hover {
+    color: var(--theme-text_0);
+  }
 `;
 
 export const buttonToggleCSS = css`
