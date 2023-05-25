@@ -34,7 +34,7 @@ function CaseCollapsingContent() {
       <>
         <nav css={menuContainerCSS}>
           <Button onClick={toggleOpen}>Menu</Button>
-          {/* 💡 1/1 Truly hide this element when closed. */}
+          {/* 💡 1/1 Hide semantically this element when closed. */}
           <div css={menuToggleCSS} data-open={isOpen}>
             <ul css={menuListCSS}>
               <li>

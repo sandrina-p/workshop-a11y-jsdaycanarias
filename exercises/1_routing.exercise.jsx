@@ -121,14 +121,15 @@ function CaseBackToTop() {
   const refTitle = useRef();
 
   function handleToTop() {
-    const titleDistanceFromTop = refTitle.current.getBoundingClientRect().top;
+    const title = refTitle.current; // access the title element in React
+    const titleDistanceFromTop = title.getBoundingClientRect().top;
 
     window.scrollTo({
       top: window.scrollY + titleDistanceFromTop - 16,
       behavior: "smooth",
     });
 
-    // 💡 1/2 Move the focus to the title here.
+    // 💡 1/2 Move the focus to the title
   }
   return (
     <>

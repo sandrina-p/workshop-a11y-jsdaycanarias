@@ -12,6 +12,7 @@ const fieldRadio = css`
     display: none;
   }
 
+  /* You can ignore these styles */
   ${customCheckboxCSS}
 `;
 
@@ -43,11 +44,13 @@ function CaseInputInformation() {
         <div css={fieldCSS.field}>
           <label
             css={fieldCSS.label}
+            for="foo"
             // 💡 1/3 Always connect the label to the input
           >
             Your e-mail <span css={fieldCSS.star}>*</span>
           </label>
           <input
+            id="foo"
             // 💡 2/2 Add the needed field info
             // - the type for keyboard layout (type)
             // - if it is required or not (aria-required)

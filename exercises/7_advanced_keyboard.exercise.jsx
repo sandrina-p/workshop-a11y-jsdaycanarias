@@ -72,9 +72,10 @@ function RovingContainer({
     //       You access the active element using:
     //       refElementsToBeFocusedOnRover.current[newActiveIx]
 
-    // 💡 4/5 Prevent default page scroll
+    // 💡 4/5 Prevent default page scroll using
+    // console.log(refElementsToBeFocusedOnRover.current)
 
-    // Note: the step 5/5 is at <RovingItem>
+    // Note: the step 5/5 is at line ~110
   }
 
   return (

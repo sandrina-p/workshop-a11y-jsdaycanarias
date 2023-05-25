@@ -27,7 +27,7 @@ function Exercise() {
       const productsList = await fetchProducts(page);
       setProcuts(productsList);
     } catch (err) {
-      // 🍀 Type "7" in the input to force an error.
+      // 🍀 If you type "7" in the input, it forces an error.
       const errorMessage = `Ups, something went wrong.`;
       setProductsError(errorMessage);
     } finally {

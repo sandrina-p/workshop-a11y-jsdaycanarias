@@ -22,10 +22,8 @@ function CaseAnimation() {
     setIsLoading(true);
     setDay(""); // reset the day
 
-    const stopShuffle = shuffleDaysAnimation(setDay);
-
     // 💡 3/4 Replace this animation with a simpler alternative.
-    // For example, just show "Loading..." in the page.
+    const stopShuffle = shuffleDaysAnimation(setDay);
     await fakeWaitTime(1500);
     stopShuffle();
 
@@ -49,8 +47,14 @@ function CaseAnimation() {
       </StackXCenter>
 
       {isLoading && (
-        // 💡 4/4 Provide an alternative loading when motion is reduced.
-        <p>{day}</p>
+        <>
+          {reducedMotion ? (
+            // 💡 4/4 Provide an alternative loading when motion is reduced.
+            <p>{day}</p>
+          ) : (
+            <p>{day}</p>
+          )}
+        </>
       )}
 
       {!isLoading && !!day && (

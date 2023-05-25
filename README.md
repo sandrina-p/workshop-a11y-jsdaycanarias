@@ -95,8 +95,6 @@ Good luck 🤞
 
 ## Workshop Dynamics
 
-This project uses [NextJS](https://nextjs.org/) with React 18.
-
 The workshop will consist of a set of challenges.  
 Each one introduces a new topic, followed by a code exercise for you to apply the concepts learned.
 After each exercise, we'll go through the solution together and clarify any question you might have.
@@ -113,6 +111,24 @@ exercises/
 - **Time value:** I don't expect you to complete all the exercises on time. The main goal is to introduce you to new things, to make you think about them, and ask me questions as we go through the materials.
 - **Guidance & tips:** Through the exercises, you'll find the light bulb emoji 💡 to guide you, and the lucky clover emoji 🍀 with extra tips for you about A11Y.
 - **Solutions:** Although all the exercises have explained solutions, check them as a last resource. If you take a peek at the solution before even trying, you'll be sabotaging your own learning. It's okay to struggle while you solve the exercise. It's part of the learning process. :)
+
+### Tooling
+
+- This project uses [NextJS](https://nextjs.org/) with [React 18](https://react.dev/).
+  - In case you aren't comfortable with React, don't worry, as the only React features we'll use the most is [props](https://react.dev/learn/passing-props-to-a-component), and [`useState()` to handle click events](https://react.dev/learn/state-a-components-memory), which facilitates DOM manipulation.
+- The CSS uses [`styled-components`](), but with the `css` prop, so it's more familiar with traditional HTML `class` attribute. For example:
+
+```js
+const title = css`
+  color: blue;
+
+  &:hover {
+    color: black;
+  }
+`
+
+<button css={title}>Get started</button>
+```
 
 ---
 
