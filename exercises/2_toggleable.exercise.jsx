@@ -249,7 +249,7 @@ You'll need to write unit tests. For example, in [\`Testing-library\`](https://t
     expect(btn).toHaveAttribute('aria-pressed', 'true')
 
 Check some real examples:
-- [Testing \`@reach-ui/menu-button\`](https://github.com/reach/reach-ui/blob/main/packages/menu-button/__tests__/menu-button.test.tsx) — ([demo](https://reach.tech/menu-button))
+- [Testing ARIA attributes](https://github.com/radix-ui/primitives/blob/main/packages/react/toggle/src/Toggle.test.tsx) — ([demo](https://www.radix-ui.com/docs/primitives/components/toggle))
 - [Testing focus behavior](https://github.com/radix-ui/primitives/blob/c7d458ce05ea88a5ae31721e12f3cd64b59a932f/packages/react/accordion/src/Accordion.test.tsx#L30) - ([demo](https://www.radix-ui.com/docs/primitives/components/accordion))
     `,
   },
