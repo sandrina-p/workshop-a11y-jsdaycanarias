@@ -115,7 +115,7 @@ exercises/
 ### Tooling
 
 - This project uses [NextJS](https://nextjs.org/) with [React 18](https://react.dev/).
-  - In case you aren't comfortable with React, don't worry, as the only React features we'll use the most is [props](https://react.dev/learn/passing-props-to-a-component), and [`useState()` to handle click events](https://react.dev/learn/state-a-components-memory), which facilitates DOM manipulation.
+  - In case you aren't comfortable with React, don't worry, as the only React features we'll use the most is `props` and `useState()` to handle click events and facilitates DOM manipulation. You can learn it all in this [5 minutes video](https://www.youtube.com/watch?v=MRIMT0xPXFI).
 - The CSS uses [`styled-components`](), but with the `css` prop, so it's more familiar with traditional HTML `class` attribute. For example:
 
 ```js
