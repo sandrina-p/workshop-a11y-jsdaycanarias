@@ -127,7 +127,7 @@ export function Footer() {
           </Feedback>
           <FooterCredits>
             Last update:{" "}
-            <time dateTime="2025-05-23T09:40:00Z">25 May 2023 · 09:40 UTC</time>
+            <time dateTime="2025-05-23T14:24:00Z">25 May 2023 · 14:24 UTC</time>
           </FooterCredits>
           <p>
             Made without coffee by{" "}

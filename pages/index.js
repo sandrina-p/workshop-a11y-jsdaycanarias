@@ -60,7 +60,7 @@ export default function Home() {
             The web is awesome and everyone should be able to enjoy it.
           </Kicker>
 
-          <Banner $tone="danger">
+          {/* <Banner $tone="danger">
             <span>
               <span className="sr-only">Work in progress</span>
               <span aria-hidden="true">🚧 🚧 🚧</span>
@@ -70,7 +70,7 @@ export default function Home() {
               minutes before the workshop starts.
               <br /> (this banner will then disappear).
             </p>
-          </Banner>
+          </Banner> */}
 
           <Stack justifyContent="center">
             <LinkExternal href="https://docs.google.com/presentation/d/1x_d9KlXnoGMsaY3QUSFtLphMpwwteSbyuETvITGgF4s/edit?usp=sharing">
